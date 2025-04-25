@@ -6,7 +6,8 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     float _horizontalMovement, _verticalMovement;
-    public float _speed;
+    float _maxSpeed;
+    public float  currentspeed;
     Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Start()
@@ -15,10 +16,16 @@ public class CharacterController : MonoBehaviour
     }
     public void SetSpeed(float newSpeed)
     {
-        _speed = newSpeed;
-        if (_speed <= 0)
+        print("speedchange");
+        if (newSpeed <= 0)
         {
-            _speed = 2f;
+            currentspeed = 2f;
+        }else if (newSpeed > _maxSpeed)
+        {
+            currentspeed = _maxSpeed;
+        }else
+        {
+            currentspeed = newSpeed;
         }
     }
     // Update is called once per frame
@@ -31,6 +38,6 @@ public class CharacterController : MonoBehaviour
     {
         if (_horizontalMovement == 0 && _verticalMovement == 0) return;
         Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
-        rigidbody.MovePosition(transform.position+directon*(_speed*Time.deltaTime));
+        rigidbody.MovePosition(transform.position+directon*(currentspeed*Time.deltaTime));
     }
 }
