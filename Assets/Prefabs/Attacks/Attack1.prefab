@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3946972234937759220}
   - component: {fileID: 3009731510810604974}
+  - component: {fileID: 4893208552137771996}
   m_Layer: 0
   m_Name: Attack1
   m_TagString: Untagged
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4893208552137771996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370090329815491240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fa4bdf145d28d449c8aafcbcc00680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGo: {fileID: 2708174891349093624, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+  mapGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
