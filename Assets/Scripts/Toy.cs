@@ -5,7 +5,7 @@ using UnityEngine;
 public class Toy : MonoBehaviour
 {
     [SerializeField] GameObject boardGo;
-    private Sprite[] toysSprites;
+    [SerializeField] Sprite[] toysSprites;
     private int randomSprite;
 
     private float digTime = 2f; // time to get item
@@ -37,7 +37,13 @@ public class Toy : MonoBehaviour
         if (diggingTime >= digTime)
         {
             print("Zebrano zabawkê");
-            boardGo.GetComponent<SpawnToys>().SpawnToy();
+            Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
+
+            Vector2 pos = Vector2.zero;
+            pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
+            pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
+            print(pos);
+            Instantiate(gameObject, pos, Quaternion.identity);
             Destroy(gameObject);
         }
     }

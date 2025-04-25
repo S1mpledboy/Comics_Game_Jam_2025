@@ -10,7 +10,7 @@ public class SpawnToys : MonoBehaviour
 
     private Bounds boardBounds;
 
-    private void Start()
+    private void Awake()
     {
         boardBounds = gameObject.GetComponent<SpriteRenderer>().bounds;      
         for(int i = 0; i < 3; i++)
@@ -22,7 +22,9 @@ public class SpawnToys : MonoBehaviour
 
     public void SpawnToy()
     {
+        
         Vector2 pos = Vector2.zero;
+        print(boardBounds.min.x + " " + boardBounds.min.y);
         pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
         pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
 
