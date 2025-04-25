@@ -6,14 +6,21 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     float _horizontalMovement, _verticalMovement;
-    [SerializeField] float _speed;
+    public float _speed;
     Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
     }
-
+    public void SetSpeed(float newSpeed)
+    {
+        _speed = newSpeed;
+        if (_speed <= 0)
+        {
+            _speed = 2f;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
