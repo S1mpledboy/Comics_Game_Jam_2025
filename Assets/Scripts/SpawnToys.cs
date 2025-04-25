@@ -12,9 +12,7 @@ public class SpawnToys : MonoBehaviour
 
     private void Start()
     {
-        boardBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
-
-        // spawn starter toys
+        boardBounds = gameObject.GetComponent<SpriteRenderer>().bounds;      
         for(int i = 0; i < 3; i++)
         {
             SpawnToy();

@@ -16,4 +16,5 @@ public class Sign : MonoBehaviour
             SignAbillity(collision.gameObject.GetComponent<CharacterController>());
         }
     }
+
 }
