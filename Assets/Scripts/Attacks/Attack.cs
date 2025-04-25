@@ -16,16 +16,20 @@ public class Attack : MonoBehaviour
 
     [SerializeField] GameObject playerGo;
     [SerializeField] GameObject mapGo;
+    [SerializeField] Sprite attackWarningSprite;
     protected Bounds mapBounds;
     protected Vector2 playerPos;
 
     protected Vector2 position; // attack position
     protected float chargeTime = 2f; // time before activate dmg
     protected float radius = 5f; // how close to player can attack
+    protected SpriteRenderer spriteRenderer;
 
 
     private void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         playerGo = FindObjectOfType<CharacterController>().gameObject;
         mapBounds = mapGo.GetComponent<SpriteRenderer>().bounds;
         playerPos = playerGo.transform.position;
@@ -65,10 +69,14 @@ public class Attack : MonoBehaviour
 
     private async Task ChargeAttack()
     {
+        //spriteRenderer.sprite = attackWarningSprite;
         float t = 0f;
+        Color color = spriteRenderer.color;
 
         while (t < chargeTime)
         {
+            color.a = t / chargeTime;
+            spriteRenderer.color = color;
             t += Time.deltaTime;
             await Task.Yield();
         }

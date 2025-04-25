@@ -97,5 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fa4bdf145d28d449c8aafcbcc00680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGo: {fileID: 2708174891349093624, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+  playerGo: {fileID: 0}
   mapGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
+  attackWarningSprite: {fileID: 0}
