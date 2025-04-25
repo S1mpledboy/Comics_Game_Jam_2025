@@ -17,12 +17,17 @@ public class SpawnToys : MonoBehaviour
         // spawn starter toys
         for(int i = 0; i < 3; i++)
         {
-            Vector2 pos = Vector2.zero;
-            pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
-            pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
-
-            Instantiate(toyGo, pos, Quaternion.identity);
+            SpawnToy();
 
         }
+    }
+
+    public void SpawnToy()
+    {
+        Vector2 pos = Vector2.zero;
+        pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
+        pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
+
+        Instantiate(toyGo, pos, Quaternion.identity);
     }
 }
