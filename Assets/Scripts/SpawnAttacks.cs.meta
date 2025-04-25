@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/SpawnAttacks.cs.meta
 guid: d02139ecae8528240a389836f88f93d3
+========
+guid: 75a6bc996fdcd674b9c2376ef65e7e09
+>>>>>>>> b502d02baa8b5f7591d8d5d5899c9dbf7903b33c:Assets/Scripts/CameraController.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
