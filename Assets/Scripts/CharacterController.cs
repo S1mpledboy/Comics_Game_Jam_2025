@@ -23,7 +23,7 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_horizontalMovement == 0 && _verticalMovement == 0) return;
-        Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement);
+        Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
         rigidbody.MovePosition(transform.position+directon*(_speed*Time.deltaTime));
     }
 }
