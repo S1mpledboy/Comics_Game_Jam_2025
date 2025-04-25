@@ -10,6 +10,7 @@ public class Toy : MonoBehaviour
 
     private float digTime = 2f; // time to get item
     private float diggingTime; // how long this toy was digging
+    private bool digging = false; // is this item digging
 
     private void Awake()
     {
@@ -25,7 +26,24 @@ public class Toy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            digging = true;
             print("Zbieram");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            digging = false;
+            print("przesta³ zbieraæ");
+        }
+    }
+
+    private void Update()
+    {
+        if (digging)
+        {
             DigToy();
         }
     }
