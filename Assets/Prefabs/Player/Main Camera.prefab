@@ -132,5 +132,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  cameraMaxX: 100
-  cameraMaxY: 100
+  cameraMaxX: 1000
+  cameraMaxY: 1000
