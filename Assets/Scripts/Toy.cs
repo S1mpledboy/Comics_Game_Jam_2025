@@ -21,9 +21,8 @@ public class Toy : MonoBehaviour
 
     // TODO:    na wejœciu pokazuje pasek progresu
     //          na wyjœciu ukrywa pasek progresu
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("kolizja");
         if (collision.gameObject.CompareTag("Player"))
         {
             print("Zbieram");
