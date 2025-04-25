@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,7 +127,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 3
+        width: 27
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7ee5f0e8c760c4f8d3ee6f1fabdd20
+      internalID: -1204423507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 3
+        width: 27
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6195a175abcffa4386cb9f4a6ea2e8b
+      internalID: 100742180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 3
+        width: 27
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddbfcbd2346dede408449bf4e628f41f
+      internalID: -958651932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 3
+        width: 27
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcbc8cb30bf703c4cb3f06e82d13609d
+      internalID: -2084751049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 3
+        width: 27
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb06a784b577683459ebd451b5f0a778
+      internalID: -1460190275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 3
+        width: 27
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b893ee1c99b7f694da49f9d365db95c5
+      internalID: 1755158465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 3
+        width: 27
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2489eaf4f304b164492924d1642dc7d7
+      internalID: 1329156215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_idle_animation_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 3
+        width: 27
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0117d8ec8e310c54c8cd053985cf9c7b
+      internalID: -1930254820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +306,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Knight_idle_animation_sprite_6: 1329156215
+      Knight_idle_animation_sprite_4: -1460190275
+      Knight_idle_animation_sprite_3: -2084751049
+      Knight_idle_animation_sprite_0: -1204423507
+      Knight_idle_animation_sprite_1: 100742180
+      Knight_idle_animation_sprite_7: -1930254820
+      Knight_idle_animation_sprite_5: 1755158465
+      Knight_idle_animation_sprite_2: -958651932
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

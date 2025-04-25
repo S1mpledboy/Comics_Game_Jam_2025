@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 390060900698563475}
   - component: {fileID: 390060900698563476}
   - component: {fileID: 390060900698563477}
-  - component: {fileID: 2011430473150880908}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -134,24 +133,3 @@ MonoBehaviour:
   - {fileID: 7370090329815491240, guid: e201889d5dcf78749a7f39e769e98ae9, type: 3}
   - {fileID: 7370090329815491240, guid: 3c45a072179234149bb3feded0fdb1b8, type: 3}
   - {fileID: 7370090329815491240, guid: dcfd7c5428933f14783ed5f950b9165a, type: 3}
---- !u!50 &2011430473150880908
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390060900698563472}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
