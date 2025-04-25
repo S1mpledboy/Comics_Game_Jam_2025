@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Sign : MonoBehaviour
 {
+    IEnumerator corutine;
+    protected float delaytime;
     protected virtual void SignAbillity(CharacterController player)
     {
 
@@ -14,7 +16,18 @@ public class Sign : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             SignAbillity(collision.gameObject.GetComponent<CharacterController>());
+            corutine = WaitForSeconds(delaytime);
+            StartCoroutine(corutine);
         }
     }
+    protected virtual void RevertEffectOfSign()
+    {
 
+    }
+    IEnumerator WaitForSeconds(float delaytime = 3f)
+    {
+        yield return new WaitForSeconds(delaytime);
+        print("Coroutine ended: " + Time.time + " seconds");
+        RevertEffectOfSign();
+    }
 }
