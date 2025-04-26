@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class CharacterController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class CharacterController : MonoBehaviour
     public int _helperSignsAmount = 0;
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
     public bool isShielded = false;
-    private SpriteRenderer shield;
+    public SpriteRenderer shield;
 
     private bool _isRolling = false;
 
@@ -37,6 +38,7 @@ public class CharacterController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        shield.gameObject.SetActive(false);
         SetAnimation(PlayerStates.Idle);
         UpdateHelpersSign();
         

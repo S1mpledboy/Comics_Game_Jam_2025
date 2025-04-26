@@ -20,6 +20,7 @@ public class StopSign : Sign
     {
         if (_playersPrevSpeed != _player.currentspeed)
             _player.currentspeed += reduceAmuont;
+        base.RevertEffectOfSign();
     }
 
 }
