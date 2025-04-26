@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using JetBrains.Annotations;
+using System.Threading.Tasks;
 
 public class CharacterController : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class CharacterController : MonoBehaviour
 
     private float timeToEndGame = 0;
 
+    private bool canGlow = true;
+
     [SerializeField] Canvas gameplayCanvas;
     [SerializeField] TextMeshProUGUI _helperSignsText;
     [SerializeField] TextMeshProUGUI _timerText;
@@ -61,6 +64,7 @@ public class CharacterController : MonoBehaviour
         {
             health = 4;
             index = health - 1;
+     
         }
         else
         {
@@ -121,6 +125,9 @@ public class CharacterController : MonoBehaviour
         }
 
     }
+
+    
+
     private void Awake()
     {
         OnTakeDamage += TakeDamage;
