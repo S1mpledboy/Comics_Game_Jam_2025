@@ -162,6 +162,8 @@ MonoBehaviour:
   toysSprites:
   - {fileID: 21300000, guid: adcc08db608ac2445bee6e76afc7b477, type: 3}
   - {fileID: 21300000, guid: a8388b0107fab1a44a0c4c6164dc1f70, type: 3}
+  - {fileID: 21300000, guid: 29373d36b20681942b1ec68a5257ba6c, type: 3}
+  - {fileID: 21300000, guid: 59c5395b4d9c6ea4c9ecd2c8b4c8b59c, type: 3}
 --- !u!212 &1517747435914678582
 SpriteRenderer:
   m_ObjectHideFlags: 0
