@@ -33,7 +33,7 @@ public class CharacterController : MonoBehaviour
     public static float score;
     private int health = 5;
     public float _helperSignsAmount = 3f;
-    private float timeToEndGame = 0;
+    public static float timeToEndGame = 0;
 
     private bool canGlow = true;
 
@@ -114,7 +114,8 @@ public class CharacterController : MonoBehaviour
         
         if (health <= 0) 
         {
-
+            gameOverCanvas.gameObject.SetActive(true);
+            gameplayCanvas.gameObject.SetActive(false);
             Time.timeScale = 0;
         }
 
