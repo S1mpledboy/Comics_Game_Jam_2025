@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,7 +127,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 19
+        height: 31
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 171189188076a6f4f877bc44e6be9e05
+      internalID: 1769803720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 0
+        width: 20
+        height: 31
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bbcf084d64f19249b119652b9a01de8
+      internalID: 960094704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1
+        width: 20
+        height: 29
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13b94c47ca256f4a8e273863625a4e5
+      internalID: 1911528508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1
+        width: 20
+        height: 29
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e49ed3400739144808e3180425d9d0
+      internalID: 1139686496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1
+        width: 20
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51798cc00ad9abe4f84dadc5c234eb5f
+      internalID: 612453094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 1
+        width: 20
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c67e68ac0e4aec740906be40f7d8a080
+      internalID: -560046541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1
+        width: 20
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1920f830e4d54804facf3e3469095614
+      internalID: 532599534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1
+        width: 20
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0317c5c324035754c91d7246b762bba8
+      internalID: -306974363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 1
+        width: 20
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aea9da687f90634fbc4a04f4958e3db
+      internalID: 572070835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_9
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1
+        width: 20
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faaa527bc5ebeff4e8abc24bd5277f88
+      internalID: 1781765828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_10
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 1
+        width: 20
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b940aeee1c5d7724bab7dd25bf67220c
+      internalID: 1422374834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_11
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 0
+        width: 20
+        height: 31
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a258e65a5b0374fa6aabbcb1a1ae64
+      internalID: -1661787922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_buff_animation_sprite_12
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 20
+        height: 31
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f874843d9bda0944d855b0ab95e4111f
+      internalID: 1699252586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +411,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shield_buff_animation_sprite_14: 1087602882
+      shield_buff_animation_sprite_9: 1781765828
+      shield_buff_animation_sprite_17: 705168619
+      shield_buff_animation_sprite_5: -560046541
+      shield_buff_animation_sprite_11: -1661787922
+      shield_buff_animation_sprite_2: 1911528508
+      shield_buff_animation_sprite_10: 1422374834
+      shield_buff_animation_sprite_12: 1699252586
+      shield_buff_animation_sprite_3: 1139686496
+      shield_buff_animation_sprite_4: 612453094
+      shield_buff_animation_sprite_0: 1769803720
+      shield_buff_animation_sprite_1: 960094704
+      shield_buff_animation_sprite_7: -306974363
+      shield_buff_animation_sprite_13: -414417449
+      shield_buff_animation_sprite_15: 379817774
+      shield_buff_animation_sprite_8: 572070835
+      shield_buff_animation_sprite_6: 532599534
+      shield_buff_animation_sprite_16: 1679483700
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

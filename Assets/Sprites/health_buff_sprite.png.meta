@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,7 +127,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: health_buff_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1
+        width: 24
+        height: 31
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3742d7d7390ed645833b45fd4dcacae
+      internalID: -1493863243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1
+        width: 24
+        height: 31
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585b69944621eb14ba059fe89c81f2f0
+      internalID: 1308048267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1
+        width: 24
+        height: 30
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6adcfe6019258644daf09a1c2a146a5f
+      internalID: 868685284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1
+        width: 24
+        height: 29
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4227dae9aeea41c4780a541c084cddc2
+      internalID: -1767422931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1
+        width: 24
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6bb5f973639684488b7fa76bf2eb5d
+      internalID: -1419673922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 1
+        width: 24
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b13d173449da94690d4e5f1808571b
+      internalID: -1207822539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1
+        width: 24
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322e836325919864285ed005a4cd81fa
+      internalID: -1979813571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 1
+        width: 24
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2b8718cf6a5e04eb5244c0e64744ec
+      internalID: 735443795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 1
+        width: 24
+        height: 27
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a6dc4e207016f4bbd2c0553703855a
+      internalID: 821700674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 1
+        width: 24
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36194ac76df24c6428bb35c6d15df770
+      internalID: -249348082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_10
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1
+        width: 24
+        height: 28
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29c281a0dd9b004ba990fee9a8f0a7d
+      internalID: 509687620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_11
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 1
+        width: 24
+        height: 30
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e06d07716cf44342ac08e6b2bcae47b
+      internalID: -1838140335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: health_buff_sprite_12
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 2
+        width: 24
+        height: 29
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f46127e21819fc4489bf73e1f1ff5f39
+      internalID: 1551470469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +411,26 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      health_buff_sprite_10: 509687620
+      health_buff_sprite_14: 1066368736
+      health_buff_sprite_4: -1419673922
+      health_buff_sprite_8: 821700674
+      health_buff_sprite_2: 868685284
+      health_buff_sprite_16: -368795984
+      health_buff_sprite_1: 1308048267
+      health_buff_sprite_15: -1086129793
+      health_buff_sprite_18: 1390332462
+      health_buff_sprite_0: -1493863243
+      health_buff_sprite_13: 531574186
+      health_buff_sprite_6: -1979813571
+      health_buff_sprite_17: 1446505043
+      health_buff_sprite_11: -1838140335
+      health_buff_sprite_7: 735443795
+      health_buff_sprite_9: -249348082
+      health_buff_sprite_12: 1551470469
+      health_buff_sprite_5: -1207822539
+      health_buff_sprite_3: -1767422931
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2708174891349093629}
   - component: {fileID: -4770796778167015872}
   - component: {fileID: 95723613030357101}
-  - component: {fileID: 3288815335396594913}
   - component: {fileID: 2734463995473938796}
   m_Layer: 0
   m_Name: Player
@@ -176,38 +175,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &3288815335396594913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2708174891349093624}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991170cfe79405c478059c3f415741ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _idleArray:
-  - {fileID: -1204423507, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  - {fileID: 100742180, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  - {fileID: -958651932, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  - {fileID: -2084751049, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  - {fileID: -1460190275, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  - {fileID: 1755158465, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  - {fileID: 1329156215, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  - {fileID: -1930254820, guid: 2a38c2274e8e0fa4da614fc836c173f0, type: 3}
-  _moveArray:
-  - {fileID: -958345423, guid: 317fa3244612d5a4abdbb1e11bbcf283, type: 3}
-  - {fileID: 563136260, guid: 317fa3244612d5a4abdbb1e11bbcf283, type: 3}
-  - {fileID: -656255824, guid: 317fa3244612d5a4abdbb1e11bbcf283, type: 3}
-  - {fileID: 1389194797, guid: 317fa3244612d5a4abdbb1e11bbcf283, type: 3}
-  _diggingArray:
-  - {fileID: -1840036030, guid: 0a9bd5333377ec04e87396c58b0291c2, type: 3}
-  - {fileID: -170855536, guid: 0a9bd5333377ec04e87396c58b0291c2, type: 3}
-  - {fileID: -649189356, guid: 0a9bd5333377ec04e87396c58b0291c2, type: 3}
-  - {fileID: 2095625586, guid: 0a9bd5333377ec04e87396c58b0291c2, type: 3}
-  - {fileID: 1033577416, guid: 0a9bd5333377ec04e87396c58b0291c2, type: 3}
 --- !u!95 &2734463995473938796
 Animator:
   serializedVersion: 4
