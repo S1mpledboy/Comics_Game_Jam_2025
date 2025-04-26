@@ -7,15 +7,17 @@ TagManager:
   - Toy
   - Hole
   - Attack
+  - DigginPlace
+  - Board
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - DamageLayer
   - Water
   - UI
-  - 
-  - 
+  - Board
+  - Player
   - 
   - 
   - 

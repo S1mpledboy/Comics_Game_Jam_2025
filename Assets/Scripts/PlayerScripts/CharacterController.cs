@@ -169,14 +169,16 @@ public class CharacterController : MonoBehaviour
     {
         
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit && hit.collider.gameObject.CompareTag("Board"))
-        {
-            digPos = hit.point - (Vector2)transform.position;
-            digPos = digPos.normalized * 1.5f;
+        Vector2 screenPos = Input.mousePosition;
+        //digPos = Camera.main.ScreenToWorldPoint(screenPos);
+        
+            digPos = (Vector2)Camera.main.ScreenToWorldPoint(screenPos) 
+                - (Vector2)transform.position;
+            digPos = digPos.normalized * 1.6f;
             digPos = digPos + (Vector2)transform.position + new Vector2(0.5f, 0f);
 
             diggingPlace.transform.position = digPos;
-        }
+        
         if (currentspeed <= 0)
         {
             currentspeed = 2f;
