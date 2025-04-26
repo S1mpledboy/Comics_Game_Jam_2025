@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class StopSign : Sign
 {
-    CharacterController _player;
+
     float reduceAmuont;
+    float _playersPrevSpeed;
     private void Start()
     {
         delaytime = 3f;
     }
-    protected override void SignAbillity(CharacterController player)
+    protected override void SignAbillity()
     {
-        reduceAmuont = player.currentspeed - (player.currentspeed * 0.7f);
-        player.currentspeed -= reduceAmuont;
-        _player = player;
-        
-
+        reduceAmuont = _player.currentspeed - (_player.currentspeed * 0.7f);
+        _player.currentspeed -= reduceAmuont;
     }
     protected override void RevertEffectOfSign()
     {
-        _player.currentspeed += reduceAmuont;
+        if (_playersPrevSpeed != _player.currentspeed)
+            _player.currentspeed += reduceAmuont;
     }
 
 }

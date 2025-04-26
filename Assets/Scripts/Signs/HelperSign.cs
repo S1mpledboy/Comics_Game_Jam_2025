@@ -5,9 +5,9 @@ using UnityEngine;
 public class HelperSign : Sign
 {
 
-    protected override void SignAbillity(CharacterController player)
+    protected override void SignAbillity()
     {
-        player._helperSignsAmount++;
-        player.UpdateHelpersSign();
+        _player._helperSignsAmount++;
+        _player.UpdateHelpersSign();
     }
 }

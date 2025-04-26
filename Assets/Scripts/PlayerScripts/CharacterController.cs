@@ -15,6 +15,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] TextMeshProUGUI _helperSignsText;
     public int _helperSignsAmount = 0;
     [SerializeField] GameObject _helperSignPrefab;
+    public bool isShielded = false;
     public enum PlayerStates
     {
         Idle,
@@ -36,15 +37,27 @@ public class CharacterController : MonoBehaviour
     {
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
-        if (Input.GetKeyDown(KeyCode.F) && _helperSignsAmount >0)
+        PlaceSign();
+        CheckSpeed();
+        
+    }
+    void CheckSpeed()
+    {
+        if (currentspeed < 0)
+        {
+            currentspeed = 2;
+        }
+    }
+    void PlaceSign()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && _helperSignsAmount > 0)
         {
             _helperSignsAmount--;
             UpdateHelpersSign();
-            
-           GameObject locatedSign =  Instantiate(_helperSignPrefab, transform.position,Quaternion.identity);
+
+            GameObject locatedSign = Instantiate(_helperSignPrefab, transform.position, Quaternion.identity);
 
         }
-        
     }
     private void FixedUpdate()
     {
