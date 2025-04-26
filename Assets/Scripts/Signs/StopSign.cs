@@ -21,6 +21,7 @@ public class StopSign : Sign
         }else if (_player.isSlowed)
         {
             return;
+            base.RevertEffectOfSign();
         }
 
     }
