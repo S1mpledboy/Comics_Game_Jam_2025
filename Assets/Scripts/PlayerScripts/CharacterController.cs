@@ -15,7 +15,6 @@ public class CharacterController : MonoBehaviour
     Rigidbody2D rigidbody;
     public GameObject toyDigSide;
     static Animator _animator;
-    [SerializeField] TextMeshProUGUI _helperSignsText;
     public Material toyMaterialBar;
     public Material toyMaterialDirt;
     public int _helperSignsAmount = 0;
@@ -26,6 +25,20 @@ public class CharacterController : MonoBehaviour
     private bool _isRolling = false;
 
     private int health = 5;
+
+    private float timeToEndGame = 5 * 60 + 1;
+
+    [SerializeField] Canvas gameplayCanvas;
+    [SerializeField] TextMeshProUGUI _helperSignsText;
+    [SerializeField] TextMeshProUGUI _timerText;
+    [SerializeField] TextMeshProUGUI _itemsCountText;
+
+
+    [SerializeField] Canvas gameOverCanvas;
+    [SerializeField] TextMeshProUGUI _itemsCountGameOverText;
+    [SerializeField] TextMeshProUGUI _timerGameOverText;
+
+    int minutes, seconds;
     public enum PlayerStates
     {
         Idle,
@@ -41,14 +54,19 @@ public class CharacterController : MonoBehaviour
         shield.gameObject.SetActive(false);
         SetAnimation(PlayerStates.Idle);
         UpdateHelpersSign();
-        
 
+        gameOverCanvas.gameObject.SetActive(false);
     }
  
     // Update is called once per frame
     void Update()
     {
-        
+        timeToEndGame -= Time.deltaTime;
+        int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
+        int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
+        _timerText.text = minutes + " " + seconds;
+
+
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
         if (Input.GetKey(KeyCode.G)) 
