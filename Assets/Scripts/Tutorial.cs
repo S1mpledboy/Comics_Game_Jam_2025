@@ -13,6 +13,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject attack;
     [SerializeField] GameObject toy;
     bool findTreasure = false;
+    bool findSign = false;
     private void Start()
     {
         toy.transform.GetChild(2).GetComponent<SpriteRenderer>().material.SetFloat("_Fill", 0.3f);
@@ -30,23 +31,27 @@ public class Tutorial : MonoBehaviour
         {
             findTreasure = true;
         }
+
+        if (collision.gameObject.CompareTag("Sign"))
+        {
+            findSign = true;
+        }
+
     }
 
     private async Task StartTutorial()
     {
         bool nextStep = false;
-        while (!nextStep)
+        while (!findSign)
         {
-            if(characterController._helperSignsAmount > 0)
-                nextStep = true;
             await Task.Yield();
         }
-        hintText.text = "Press F to find way to toy";
+        hintText.text = "Press RPM to find way to toy";
         nextStep = false;
 
         while (!nextStep)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
                 nextStep = true;
             await Task.Yield();
         }
@@ -57,7 +62,7 @@ public class Tutorial : MonoBehaviour
         {
             await Task.Yield();
         }
-        hintText.text = "Hold E to dig";
+        hintText.text = "Hold LPM to dig";
         nextStep = false;
 
         while (!nextStep)
@@ -70,8 +75,8 @@ public class Tutorial : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             Vector2 pos = transform.position;
-            pos.x = pos.x - Mathf.Pow(-1f, (int)(i / 2));
-            pos.y = pos.y - Mathf.Pow(-1f, (int)(i % 2));
+            pos.x = pos.x - Mathf.Pow(-0.5f, (int)(i / 2));
+            pos.y = pos.y - Mathf.Pow(-0.5f, (int)(i % 2));
             Instantiate(attack, pos, Quaternion.identity);
         }
         nextStep = false;

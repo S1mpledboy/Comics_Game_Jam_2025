@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 29.000002
       objectReference: {fileID: 0}
+    - target: {fileID: 2035721400574164873, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
+      propertyPath: m_TagString
+      value: Board
+      objectReference: {fileID: 0}
     - target: {fileID: 5375569284486436656, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
       propertyPath: m_Enabled
       value: 0
