@@ -63,7 +63,8 @@ public class Attack : MonoBehaviour
     protected virtual Vector2 CalculatePosition()
     {
         // attack in some range near player
-        position = playerPos + new Vector2(
+        position = playerPos + new Vector2
+        (
             Random.Range(-radius, radius),
             Random.Range(-radius, radius)
         );
