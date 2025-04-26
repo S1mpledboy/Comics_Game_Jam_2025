@@ -207,7 +207,7 @@ public class CharacterController : MonoBehaviour
                 toyDigSide.gameObject.SetActive(false);
                 SetAnimation(PlayerStates.Idle);
                 collectedItems++;
-                _itemsCountText.text = collectedItems.ToString()+"/ 5";
+                _itemsCountText.text = collectedItems.ToString();
             } 
         }
         else
