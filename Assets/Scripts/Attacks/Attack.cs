@@ -46,8 +46,7 @@ public class Attack : MonoBehaviour
 
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
 
-        // set position
-        //transform.position = CalculatePosition();
+ 
 
         StartAttacking();
 
@@ -58,7 +57,7 @@ public class Attack : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             if (collision.GetComponent<CharacterController>().isShielded) return;
-            CharacterController.OnTakeDamage?.Invoke();
+            CharacterController.OnTakeDamage?.Invoke(1);
         }
     }
     protected virtual Vector2 CalculatePosition()

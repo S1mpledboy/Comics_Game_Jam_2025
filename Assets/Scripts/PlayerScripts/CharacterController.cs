@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class CharacterController : MonoBehaviour
 {
-    public static Action OnTakeDamage;
+    public static Action<int> OnTakeDamage;
     float _horizontalMovement, _verticalMovement;
     public float  currentspeed, digTime;
     private bool canRoll = true;
@@ -48,9 +48,9 @@ public class CharacterController : MonoBehaviour
         Diging,
         Doging
     }
-    void TakeDamage()
+    void TakeDamage(int valueOfChange)
     {
-        health--;
+        health+=valueOfChange;
         //StartAnimationHealth
         if(health <= 0) 
         {
@@ -224,13 +224,5 @@ public class CharacterController : MonoBehaviour
         _helperSignsText.text = _helperSignsAmount.ToString();
     }
 
-    public void ChangeHealth(int healthVal)
-    {
-        health = Mathf.Clamp(health + healthVal, 0, 5);
-        
-        if(health == 0)
-        {
-            SceneManager.LoadScene(1);
-        }
-    }
+
 }
