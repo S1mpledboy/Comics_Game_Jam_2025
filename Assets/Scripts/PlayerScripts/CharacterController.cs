@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     public int _helperSignsAmount = 0;
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
     public bool isShielded = false;
+    private SpriteRenderer shield;
 
     private int health = 5;
     public enum PlayerStates
