@@ -15,6 +15,7 @@ public class Attack : MonoBehaviour
    */
     protected GameObject playerGo;
     [SerializeField] GameObject mapGo;
+    protected GameObject mapGoAttack;
     [SerializeField] Sprite attackWarningSprite;
     protected Bounds mapBounds;
     protected Vector2 playerPos;
@@ -30,13 +31,13 @@ public class Attack : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-
+        mapGoAttack = mapGo;
         playerGo = FindObjectOfType<CharacterController>().gameObject;
         mapBounds = mapGo.GetComponent<SpriteRenderer>().bounds;
         playerPos = playerGo.transform.position;
 
         // set position
-        transform.position = CalculatePosition();
+        //transform.position = CalculatePosition();
 
         StartAttacking();
 

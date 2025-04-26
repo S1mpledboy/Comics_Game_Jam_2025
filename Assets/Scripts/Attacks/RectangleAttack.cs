@@ -9,9 +9,9 @@ public class RectangleAttack : Attack
     {
         chargeTime = 2f; // how long to charge
         radius = 1f; // how far from player
-        attackRadius = 3f; // how big area damage
+        attackRadius = 1f; // how big area damage
 
-        transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 90f));
+        //transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 90f));
 
         base.Awake();
 

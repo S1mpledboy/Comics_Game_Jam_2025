@@ -7,6 +7,9 @@ public class CharacterController : MonoBehaviour
 {
     float _horizontalMovement, _verticalMovement;
     public float  currentspeed;
+    private bool canRoll = true;
+    private float speed = 1f;
+    private float rollTime; // how long can roll
     Rigidbody2D rigidbody;
     static Animator _animator;
     [SerializeField] TextMeshProUGUI _helperSignsText;
@@ -52,7 +55,27 @@ public class CharacterController : MonoBehaviour
         }
         SetAnimation(PlayerStates.Move);
         Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
-        rigidbody.MovePosition(transform.position+directon*(currentspeed*Time.deltaTime));
+        rigidbody.MovePosition(transform.position+directon*(speed * currentspeed*Time.deltaTime));
+
+        // roll
+        if (Input.GetKeyDown(KeyCode.Space) && canRoll)
+        {
+            print("Roll");
+            canRoll = false;
+            speed = 1.7f;
+            rollTime = 0.2f;
+        }
+
+        if(!canRoll && rollTime > 0f)
+        {
+            rollTime -= Time.deltaTime;
+            if(rollTime <= 0f)
+            {
+                speed = 1f;
+                canRoll = true;
+                rollTime = 0f;
+            }
+        }
     }
 
     public static void SetAnimation(PlayerStates state)
