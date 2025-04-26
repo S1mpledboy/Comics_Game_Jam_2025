@@ -54,7 +54,7 @@ public class Attack : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer ==3)
         {
             if (collision.GetComponent<CharacterController>().isShielded) return;
             CharacterController.OnTakeDamage?.Invoke(-1);

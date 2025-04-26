@@ -68,19 +68,55 @@ public class CharacterController : MonoBehaviour
         }
         if (valueOfChange < 0)
         {
-            herarts[index].gameObject.GetComponent<Image>().sprite = heartsSpritesDic["Damage"].sprite;
+            herarts.Reverse();
+            foreach (GameObject heart in herarts)
+            {
+                if(heart.GetComponent<Image>().sprite == heartsSpritesDic["Damage"].sprite)
+                {
+                    continue;
 
+                }else if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Heal"].sprite)
+                {
+                    heart.GetComponent<Image>().sprite = heartsSpritesDic["Damage"].sprite;
+                    break;
+                    
+                }
+            }
+
+            herarts.Reverse();
         }
         else if (valueOfChange>0)
         {
-            herarts[index].gameObject.GetComponent<Image>().sprite = heartsSpritesDic["Heal"].sprite;
+            foreach (GameObject heart in herarts)
+            {
+                if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Damage"].sprite)
+                {
+                    heart.GetComponent<Image>().sprite = heartsSpritesDic["Heal"].sprite;
+                    break;
+                }
+                else if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Heal"].sprite)
+                {
+                    continue;
+
+                }
+            }
 
         }
         
         if (health <= 0) 
         {
             gameOverCanvas.gameObject.SetActive(true);
+            try
+            {
+                _itemsCountGameOverText.text = _itemsCountText.text;
+                _timerGameOverText.text = timeToEndGame.ToString();
+            }
+            catch (Exception ex) 
+            {
+                print(ex);
+            }
             gameplayCanvas.gameObject.SetActive(false);
+
             Time.timeScale = 0;
         }
 
@@ -170,6 +206,8 @@ public class CharacterController : MonoBehaviour
                 elapsedTimeOfDigging = 0;
                 toyDigSide.gameObject.SetActive(false);
                 SetAnimation(PlayerStates.Idle);
+                collectedItems++;
+                _itemsCountText.text = collectedItems.ToString()+"/ 5";
             } 
         }
         else
