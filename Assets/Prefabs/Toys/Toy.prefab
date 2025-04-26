@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2105721878538103089}
   - component: {fileID: 4775158269707655071}
   - component: {fileID: 1517747435914678582}
+  - component: {fileID: 5947402497406624397}
   m_Layer: 0
   m_Name: Toy
   m_TagString: Toy
@@ -212,7 +213,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6762921299256070938}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -244,7 +245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
-  holePrefab: {fileID: 20752679740391938, guid: d99ac74e4428fa845a021ffeb927e443, type: 3}
   toysSprites:
   - {fileID: 21300000, guid: adcc08db608ac2445bee6e76afc7b477, type: 3}
   - {fileID: 21300000, guid: a8388b0107fab1a44a0c4c6164dc1f70, type: 3}
@@ -302,6 +302,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &5947402497406624397
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762921299256070938}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.48
 --- !u!1 &6952185316862687811
 GameObject:
   m_ObjectHideFlags: 0
