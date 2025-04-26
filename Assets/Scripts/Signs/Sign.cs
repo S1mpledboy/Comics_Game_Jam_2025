@@ -12,6 +12,7 @@ public class Sign : MonoBehaviour
     protected CharacterController _player;
     [SerializeField] protected GameObject scoreOnBoardOb;
     Vector3 cureentpos;
+    protected float addedSCore;
     protected virtual void SignAbillity()
     {
 
@@ -31,9 +32,10 @@ public class Sign : MonoBehaviour
             cureentpos = transform.position;
             transform.position = new Vector3(0f, 0f, 300f);
             GameObject scoreNumber = Instantiate(scoreOnBoardOb, new Vector3(cureentpos.x, cureentpos.y + 1, cureentpos.z), Quaternion.identity);
-            scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(Random.Range(0, 255), Random.Range(0, 255), Random.Range(0, 255));
-            scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = 5f.ToString();
-            CharacterController.score += 5f;
+            float randomColor = Random.Range(0, 255);
+            scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = addedSCore.ToString();
+            scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(randomColor, randomColor, randomColor);
+            CharacterController.score += addedSCore;
             Destroy(scoreNumber, 1f);
         }
     }

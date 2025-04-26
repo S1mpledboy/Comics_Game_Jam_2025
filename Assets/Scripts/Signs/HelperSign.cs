@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class HelperSign : Sign
 {
-
+    private void Start()
+    {
+        addedSCore = 5f;
+    }
     protected override void SignAbillity()
     {
-        CharacterController.score += 5f;
+        
         base.RevertEffectOfSign();
     }
 }

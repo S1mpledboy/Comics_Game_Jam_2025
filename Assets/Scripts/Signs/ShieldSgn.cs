@@ -8,6 +8,7 @@ public class ShieldSgn : Sign
     private void Start()
     {
         delaytime = 3f;
+        addedSCore = 5f;
     }
     protected override void SignAbillity()
     {

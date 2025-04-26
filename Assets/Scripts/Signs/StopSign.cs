@@ -9,6 +9,7 @@ public class StopSign : Sign
     private void Start()
     {
         delaytime = 3f;
+        addedSCore = -10f;
     }
     protected override void SignAbillity()
     {

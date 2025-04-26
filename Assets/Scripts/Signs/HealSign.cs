@@ -8,6 +8,7 @@ public class HealSign : Sign
     void Start()
     {
         delaytime = 1f;
+        addedSCore = 10f;
     }
 
     protected override void SignAbillity()
