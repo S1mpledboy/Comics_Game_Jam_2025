@@ -15,7 +15,7 @@ public class StopSign : Sign
         reduceAmuont = player.currentspeed - (player.currentspeed * 0.7f);
         player.currentspeed -= reduceAmuont;
         _player = player;
-        transform.position = new Vector3(0,0,300f);
+        
 
     }
     protected override void RevertEffectOfSign()

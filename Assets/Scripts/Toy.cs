@@ -62,7 +62,7 @@ public class Toy : MonoBehaviour
             pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
             Instantiate(gameObject, pos, Quaternion.identity);
             Destroy(gameObject);
-            CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
+            CharacterController.SetAnimation(CharacterController.PlayerStates.Idle);
         }
     }
 }

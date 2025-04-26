@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 
 public class CharacterController : MonoBehaviour
 {
@@ -9,6 +9,9 @@ public class CharacterController : MonoBehaviour
     public float  currentspeed;
     Rigidbody2D rigidbody;
     static Animator _animator;
+    [SerializeField] TextMeshProUGUI _helperSignsText;
+    public int _helperSignsAmount = 0;
+    [SerializeField] GameObject _helperSignPrefab;
     public enum PlayerStates
     {
         Idle,
@@ -20,8 +23,9 @@ public class CharacterController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-
         SetAnimation(PlayerStates.Idle);
+        UpdateHelpersSign();
+
     }
  
     // Update is called once per frame
@@ -29,6 +33,14 @@ public class CharacterController : MonoBehaviour
     {
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
+        if (Input.GetKeyDown(KeyCode.F)&& _helperSignsAmount >0)
+        {
+            _helperSignsAmount--;
+            UpdateHelpersSign();
+            
+           GameObject locatedSign =  Instantiate(_helperSignPrefab, transform.position,Quaternion.identity);
+
+        }
         
     }
     private void FixedUpdate()
@@ -65,5 +77,8 @@ public class CharacterController : MonoBehaviour
         }
 
     }
-
+    public void UpdateHelpersSign()
+    {
+        _helperSignsText.text = _helperSignsAmount.ToString();
+    }
 }
