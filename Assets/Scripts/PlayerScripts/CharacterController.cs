@@ -26,7 +26,8 @@ public class CharacterController : MonoBehaviour
     {
         Idle,
         Move,
-        Diging
+        Diging,
+        Doging
     }
     // Start is called before the first frame update
     void Start()
@@ -98,6 +99,18 @@ public class CharacterController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        // roll
+        if (Input.GetKeyDown(KeyCode.Space) && canRoll)
+        {
+            SetAnimation(PlayerStates.Doging);
+            print(_animator.GetBool("IsDoging"));
+            _horizontalMovement = _verticalMovement = 0;
+            print("Roll");
+            canRoll = false;
+            speed = 1.7f;
+            rollTime = 0.2f;
+
+        }
         if (_horizontalMovement == 0 && _verticalMovement == 0) 
         {
             SetAnimation(PlayerStates.Idle);
@@ -107,14 +120,7 @@ public class CharacterController : MonoBehaviour
         Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
         rigidbody.MovePosition(transform.position+directon*(speed * currentspeed*Time.deltaTime));
 
-        // roll
-        if (Input.GetKeyDown(KeyCode.Space) && canRoll)
-        {
-            print("Roll");
-            canRoll = false;
-            speed = 1.7f;
-            rollTime = 0.2f;
-        }
+ 
 
         if(!canRoll && rollTime > 0f)
         {
@@ -136,16 +142,25 @@ public class CharacterController : MonoBehaviour
                 _animator.SetBool("IsIdle", true);
                 _animator.SetBool("IsMoving", false);
                 _animator.SetBool("IsDigging", false);
+                _animator.SetBool("IsDoging", false);
                 break;
             case PlayerStates.Move:
                 _animator.SetBool("IsIdle", false);
                 _animator.SetBool("IsMoving", true);
                 _animator.SetBool("IsDigging", false);
+                _animator.SetBool("IsDoging", false);
                 break;
             case PlayerStates.Diging:
                 _animator.SetBool("IsIdle", false);
                 _animator.SetBool("IsMoving", false);
                 _animator.SetBool("IsDigging", true);
+                _animator.SetBool("IsDoging", false);
+                break;
+            case PlayerStates.Doging:
+                _animator.SetBool("IsIdle", false);
+                _animator.SetBool("IsMoving", false);
+                _animator.SetBool("IsDigging", false);
+                _animator.SetBool("IsDoging", true);
                 break;
         }
 
