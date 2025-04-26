@@ -24,7 +24,8 @@ public class SpeedBoostSign : Sign
         }
         else if (_player.isSpeedBoosted)
         {
-            RestartCorutine();
+            return;
+            base.RevertEffectOfSign();
         }
 
     }

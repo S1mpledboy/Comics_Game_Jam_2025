@@ -15,7 +15,13 @@ public class LocatedHelperSign : MonoBehaviour
         float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg;
         transform.Rotate(0, 0, angle);
         Instantiate(_poleGo, transform.position, Quaternion.identity);
+        Invoke(nameof(DisableArrow), 7f);
         
+    }
+
+    void DisableArrow()
+    {
+        Destroy(gameObject);
     }
  
 }

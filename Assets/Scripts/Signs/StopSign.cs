@@ -20,7 +20,7 @@ public class StopSign : Sign
             _player.isSlowed = true;
         }else if (_player.isSlowed)
         {
-            RestartCorutine();
+            return;
         }
 
     }
