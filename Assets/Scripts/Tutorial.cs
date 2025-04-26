@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
     }
     private void Update()
     {
-   
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -99,12 +99,14 @@ public class Tutorial : MonoBehaviour
                 nextStep = true;
             await Task.Yield();
         }
-        SceneManager.LoadScene(1);
+            SceneManager.LoadScene(1);
 
     }
 
     public void Reset()
     {
-        SceneManager.LoadScene(0);
+        
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
     }
 }
