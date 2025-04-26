@@ -41,15 +41,20 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
+        if (Input.GetKey(KeyCode.G)) 
+        {
+            TryDig();
+            _horizontalMovement = _verticalMovement = 0;
+        }
+
         PlaceSign();
         CheckSpeed();
-        TryDig();
     }
     void TryDig()
     {
-        if (!Input.GetKey(KeyCode.G)) return;
        SetAnimation(PlayerStates.Diging);
         if (Toy.digging)
         {
