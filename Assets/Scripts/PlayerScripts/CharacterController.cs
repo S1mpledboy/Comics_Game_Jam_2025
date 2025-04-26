@@ -68,7 +68,6 @@ public class CharacterController : MonoBehaviour
         }
         if (valueOfChange < 0)
         {
-            print("damage");
             herarts[index].gameObject.GetComponent<Image>().sprite = heartsSpritesDic["Damage"].sprite;
 
         }
