@@ -24,5 +24,6 @@ public class SpeedBoostSign : Sign
     {
         if(_playersPrevSpeed!=_player.currentspeed)
         _player.currentspeed -= boostAmount;
+        base.RevertEffectOfSign();
     }
 }

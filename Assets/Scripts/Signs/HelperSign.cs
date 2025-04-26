@@ -9,5 +9,6 @@ public class HelperSign : Sign
     {
         _player._helperSignsAmount++;
         _player.UpdateHelpersSign();
+        base.RevertEffectOfSign();
     }
 }

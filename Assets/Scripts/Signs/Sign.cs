@@ -24,12 +24,12 @@ public class Sign : MonoBehaviour
             
             corutine = WaitForSeconds(delaytime);
             StartCoroutine(corutine);
-            gameObject.SetActive(false);
+            transform.position = new Vector3(0f, 0f, 300f);
         }
     }
     protected virtual void RevertEffectOfSign()
     {
-
+        Destroy(gameObject);
     }
     IEnumerator WaitForSeconds(float delaytime = 3f)
     {
