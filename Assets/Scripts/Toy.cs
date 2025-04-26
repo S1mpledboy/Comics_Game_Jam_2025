@@ -60,6 +60,7 @@ public class Toy : MonoBehaviour
         Vector2 pos = Vector2.zero;
         pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
         pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
+        gameObject.SetActive(true);
         Instantiate(gameObject, pos, Quaternion.identity);
     }
 
