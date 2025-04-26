@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnSigns : MonoBehaviour
 {
     [SerializeField] GameObject[] signsGo; // toy graphic
+    [SerializeField] GameObject board;
 
 
     private Bounds boardBounds;
@@ -16,7 +17,7 @@ public class SpawnSigns : MonoBehaviour
     private void Start()
     {
         spawnCooldown = spawnTime;
-        boardBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
+        boardBounds = board.GetComponent<SpriteRenderer>().bounds;
     }
 
     private void Update()
