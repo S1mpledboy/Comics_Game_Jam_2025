@@ -58,7 +58,7 @@ public class Attack : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             if (collision.GetComponent<CharacterController>().isShielded) return;
-            collision.GetComponent<CharacterController>().ChangeHealth(-1);
+            CharacterController.OnTakeDamage?.Invoke();
         }
     }
     protected virtual Vector2 CalculatePosition()

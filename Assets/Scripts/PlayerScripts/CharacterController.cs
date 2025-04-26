@@ -51,12 +51,26 @@ public class CharacterController : MonoBehaviour
     void TakeDamage()
     {
         health--;
-        //StartAnimation
+        //StartAnimationHealth
         if(health <= 0) 
         {
-            //EndGame;
+            gameOverCanvas.gameObject.SetActive(true);
+            gameplayCanvas.gameObject.SetActive(false);
+            Time.timeScale = 0;
         }
 
+    }
+    private void Awake()
+    {
+        OnTakeDamage += TakeDamage;
+    }
+    private void OnDestroy()
+    {
+        OnTakeDamage -= TakeDamage;
+    }
+    private void OnDisable()
+    {
+        OnTakeDamage -= TakeDamage;
     }
     // Start is called before the first frame update
     void Start()
@@ -66,6 +80,7 @@ public class CharacterController : MonoBehaviour
         shield.gameObject.SetActive(false);
         SetAnimation(PlayerStates.Idle);
         UpdateHelpersSign();
+        
 
         gameOverCanvas.gameObject.SetActive(false);
     }
@@ -73,6 +88,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         timeToEndGame -= Time.deltaTime;
         int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
         int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
@@ -86,7 +102,15 @@ public class CharacterController : MonoBehaviour
             TryDig();
             _horizontalMovement = _verticalMovement = 0;
         }
-
+        // roll
+        if (Input.GetKeyDown(KeyCode.Space) && canRoll)
+        {
+            SetAnimation(PlayerStates.Doging);
+            canRoll = false;
+            _isRolling = true;
+            speed = 1.7f;
+            rollTime = 0.25f;
+        }
         PlaceSign();
         CheckSpeed();
     }
@@ -134,19 +158,8 @@ public class CharacterController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        // roll
-        if (Input.GetKeyDown(KeyCode.Space) && canRoll)
-        {
-            SetAnimation(PlayerStates.Doging);
-            //rigidbody.AddForce(new Vector2(_horizontalMovement, _verticalMovement)*10f, ForceMode2D.Force);
-            //_horizontalMovement = _verticalMovement = 0;
-            print("Roll");
-            
-            canRoll = false;
-            _isRolling = true;
-            speed = 1.7f;
-            rollTime = 0.5f;
-        }
+        
+
         if (!canRoll && rollTime > 0f)
         {
             rollTime -= Time.deltaTime;
