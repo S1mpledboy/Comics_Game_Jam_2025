@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class CircleAttack : Attack
@@ -12,5 +13,12 @@ public class CircleAttack : Attack
 
 
         base.Awake();
+    }
+
+    protected override Task DropDownAttack()
+    {
+        transform.GetChild(0).localScale = new Vector2(1.5f, 1.5f);
+
+        return base.DropDownAttack();
     }
 }
