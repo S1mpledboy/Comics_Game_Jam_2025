@@ -13,12 +13,14 @@ public class ShieldSgn : Sign
     {
         _player.isShielded = true;
         _player.shield.gameObject.SetActive(true);
+        _player.PlayShieldHeartAnimation("Shield");
     }
     protected override void RevertEffectOfSign()
     {
         print("shield off");
         _player.isShielded = false;
         _player.shield.gameObject.SetActive(false);
+        _player.PlayShieldHeartAnimation("Heal");
         base.RevertEffectOfSign();
     }
 }

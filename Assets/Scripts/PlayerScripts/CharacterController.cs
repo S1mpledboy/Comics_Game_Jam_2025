@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
@@ -23,7 +24,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
     public bool isShielded = false, isSlowed = false, isSpeedBoosted;
     public SpriteRenderer shield;
-
+    [SerializeField] List<GameObject> herarts = new List<GameObject>();
+    [SerializeField] List<SpriteRenderer> heartsSp = new List<SpriteRenderer>();
+    Dictionary<string, SpriteRenderer> heartsSpritesDic = new Dictionary<string, SpriteRenderer>();
     private bool _isRolling = false;
 
     private int health = 5;
@@ -51,8 +54,30 @@ public class CharacterController : MonoBehaviour
     void TakeDamage(int valueOfChange)
     {
         health+=valueOfChange;
-        //StartAnimationHealth
-        if(health <= 0) 
+        int index = 0;
+        if (health >= 4) 
+        {
+            health = 4;
+            index = health - 1;
+        }
+        else
+        {
+            index = health;
+        }
+        herarts[index].gameObject.GetComponent<Animator>().enabled = true;
+        if (valueOfChange < 0)
+        {
+
+            herarts[index].gameObject.GetComponent<Image>().sprite = heartsSpritesDic["Damage"].sprite;
+
+        }
+        else if (valueOfChange>0)
+        {
+            herarts[index].gameObject.GetComponent<Image>().sprite = heartsSpritesDic["Heal"].sprite;
+
+        }
+        
+        if (health <= 0) 
         {
             gameOverCanvas.gameObject.SetActive(true);
             gameplayCanvas.gameObject.SetActive(false);
@@ -80,11 +105,28 @@ public class CharacterController : MonoBehaviour
         shield.gameObject.SetActive(false);
         SetAnimation(PlayerStates.Idle);
         UpdateHelpersSign();
-        
+        heartsSpritesDic.Add("Heal", heartsSp[0]);
+        heartsSpritesDic.Add("Damage", heartsSp[1]);
+        heartsSpritesDic.Add("Shield", heartsSp[2]);
+
 
         gameOverCanvas.gameObject.SetActive(false);
     }
- 
+    public void PlayShieldHeartAnimation(string hearatName)
+    {
+        foreach(GameObject heart in herarts)
+        {
+            if(heart.gameObject.GetComponent<SpriteRenderer>().sprite != heartsSpritesDic["Damage"])
+            {
+                heart.gameObject.GetComponent<Image>().sprite = heartsSpritesDic[hearatName].sprite;
+            }
+            else
+            {
+                continue;
+            }
+            
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -93,7 +135,7 @@ public class CharacterController : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
         int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
         _timerText.text = minutes + ":" + seconds;
-
+        
 
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
