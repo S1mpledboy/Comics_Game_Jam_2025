@@ -21,7 +21,6 @@ public class CharacterController : MonoBehaviour
     static Animator _animator;
     public Material toyMaterialBar;
     public Material toyMaterialDirt;
-    public int _helperSignsAmount = 0;
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
     public bool isShielded = false, isSlowed = false, isSpeedBoosted;
     public SpriteRenderer shield;
@@ -30,13 +29,13 @@ public class CharacterController : MonoBehaviour
     Dictionary<string, SpriteRenderer> heartsSpritesDic = new Dictionary<string, SpriteRenderer>();
     private bool _isRolling = false;
     public int collectedItems = 0;
-
+    public static float score;
     private int health = 5;
-
+    public float _helperSignsAmount = 3f;
     private float timeToEndGame = 0;
 
     [SerializeField] Canvas gameplayCanvas;
-    [SerializeField] TextMeshProUGUI _helperSignsText;
+    [SerializeField] public TextMeshProUGUI _scoreText;
     [SerializeField] TextMeshProUGUI _timerText;
     [SerializeField] TextMeshProUGUI _itemsCountText;
 
@@ -105,18 +104,7 @@ public class CharacterController : MonoBehaviour
         
         if (health <= 0) 
         {
-            gameOverCanvas.gameObject.SetActive(true);
-            try
-            {
-                _itemsCountGameOverText.text = _itemsCountText.text;
-                _timerGameOverText.text = timeToEndGame.ToString();
-            }
-            catch (Exception ex) 
-            {
-                print(ex);
-            }
-            gameplayCanvas.gameObject.SetActive(false);
-            _itemsCountGameOverText.text = (collectedItems*timeToEndGame).ToString();
+
             Time.timeScale = 0;
         }
 
@@ -140,7 +128,6 @@ public class CharacterController : MonoBehaviour
         _animator = GetComponent<Animator>();
         shield.gameObject.SetActive(false);
         SetAnimation(PlayerStates.Idle);
-        UpdateHelpersSign();
         heartsSpritesDic.Add("Heal", heartsSp[0]);
         heartsSpritesDic.Add("Damage", heartsSp[1]);
         heartsSpritesDic.Add("Shield", heartsSp[2]);
@@ -172,7 +159,7 @@ public class CharacterController : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
         int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
         _timerText.text = minutes + ":" + seconds;
-        
+        _scoreText.text = score.ToString();
 
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
@@ -228,13 +215,9 @@ public class CharacterController : MonoBehaviour
     }
     void PlaceSign()
     {
-        if (Input.GetMouseButtonDown(1) && _helperSignsAmount > 0)
+        if (Input.GetMouseButtonDown(1) )
         {
-            _helperSignsAmount--;
-            UpdateHelpersSign();
-
             GameObject locatedSign = Instantiate(_helperSignPrefab, transform.position, Quaternion.identity);
-
         }
     }
     private void FixedUpdate()
@@ -298,10 +281,7 @@ public class CharacterController : MonoBehaviour
         }
 
     }
-    public void UpdateHelpersSign()
-    {
-        _helperSignsText.text = _helperSignsAmount.ToString();
-    }
+
 
     public void Reset()
     {
