@@ -7,6 +7,6 @@ public class ScoreScene : MonoBehaviour
 {
     public void ResetGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }
