@@ -27,7 +27,7 @@ public class Toy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             digging = true;
-            print("Zbieram");
+            
         }
     }
 
@@ -36,7 +36,7 @@ public class Toy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             digging = false;
-            print("przesta³ zbieraæ");
+            
         }
     }
 
@@ -51,17 +51,18 @@ public class Toy : MonoBehaviour
     public void DigToy()
     {
         diggingTime += Time.deltaTime;
+        CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
         if (diggingTime >= digTime)
         {
-            print("Zebrano zabawkê");
+           
             Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
 
             Vector2 pos = Vector2.zero;
             pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
             pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
-            print(pos);
             Instantiate(gameObject, pos, Quaternion.identity);
             Destroy(gameObject);
+            CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
         }
     }
 }
