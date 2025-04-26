@@ -12,11 +12,16 @@ public class Toy : MonoBehaviour
     private float diggingTime; // how long this toy was digging
     private bool digging = false; // is this item digging
 
+    private Material material;
+
     private void Awake()
     {
         // set random sprite
         randomSprite = Random.Range(0, toysSprites.Length);
         gameObject.GetComponent<SpriteRenderer>().sprite = toysSprites[randomSprite];
+
+        material = transform.GetChild(1).GetComponent<SpriteRenderer>().material;
+        material.SetFloat("_Fill", 0f);
     }
 
 
@@ -51,6 +56,7 @@ public class Toy : MonoBehaviour
     public void DigToy()
     {
         diggingTime += Time.deltaTime;
+        material.SetFloat("_Fill", diggingTime / digTime);
         if (diggingTime >= digTime)
         {
             print("Zebrano zabawkê");
