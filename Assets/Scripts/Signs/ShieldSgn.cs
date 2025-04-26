@@ -12,9 +12,10 @@ public class ShieldSgn : Sign
     }
     protected override void SignAbillity()
     {
-        print(_player);
+        
         _player.isShielded = true;
         _player.shield.gameObject.SetActive(true);
+        _player.playerSFX.PlayOneShot(_player.shieldSFX);
         _player.PlayShieldHeartAnimation("Shield");
     }
     protected override void RevertEffectOfSign()

@@ -35,9 +35,9 @@ public class CharacterController : MonoBehaviour
     public float _helperSignsAmount = 3f;
     public static float timeToEndGame = 0;
 
-    AudioSource playerSFX;
+    public AudioSource playerSFX;
     private bool canGlow = true;
-    [SerializeField] AudioClip walkSFX, healSFX, shieldSFX, dodgeSFX, damageSFX,diggingSFX;
+    [SerializeField] public AudioClip walkSFX, healSFX, shieldSFX, dodgeSFX, damageSFX,diggingSFX;
     [SerializeField] Canvas gameplayCanvas;
     [SerializeField] public TextMeshProUGUI _scoreText;
     [SerializeField] TextMeshProUGUI _timerText;
@@ -171,7 +171,6 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit && hit.collider.gameObject.CompareTag("Board"))
         {
