@@ -17,7 +17,7 @@ public class StopSign : Sign
         {
             reduceAmuont = _player.currentspeed - (_player.currentspeed * 0.7f);
             _player.currentspeed -= reduceAmuont;
-            _player.isShielded = true;
+            _player.isSlowed = true;
         }else if (_player.isSlowed)
         {
             RestartCorutine();
