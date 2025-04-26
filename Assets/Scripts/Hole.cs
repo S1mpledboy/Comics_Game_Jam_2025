@@ -19,10 +19,18 @@ public class Hole : MonoBehaviour
     private async Task StartFading()
     {
         float t = 0;
+        while(t < 5f)
+        {
+            t += Time.deltaTime;
+            await Task.Yield();
+        }
+        t = 0;
 
         while (t < 1f)
         {
+            t += Time.deltaTime;
             material.SetFloat("_Fill", t);
+            await Task.Yield();
         }
 
         Destroy(gameObject);
