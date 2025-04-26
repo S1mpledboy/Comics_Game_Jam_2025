@@ -9,6 +9,7 @@ TagManager:
   - Attack
   - DigginPlace
   - Board
+  - Sign
   layers:
   - Default
   - TransparentFX
