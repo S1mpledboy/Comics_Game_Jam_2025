@@ -21,9 +21,10 @@ public class Sign : MonoBehaviour
                 _player = collision.gameObject.GetComponent<CharacterController>();
             }
             SignAbillity();
-            transform.position = new Vector3(0, 0, 300f);
+            
             corutine = WaitForSeconds(delaytime);
             StartCoroutine(corutine);
+            gameObject.SetActive(false);
         }
     }
     protected virtual void RevertEffectOfSign()

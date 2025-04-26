@@ -10,7 +10,7 @@ public class Toy : MonoBehaviour
 
     private float digTime = 2f; // time to get item
     private float diggingTime; // how long this toy was digging
-    private bool digging = false; // is this item digging
+    public static bool digging = false; // is this item digging
 
     private Material material;
 
@@ -21,8 +21,18 @@ public class Toy : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = toysSprites[randomSprite];
         material = transform.GetChild(1).GetComponent<SpriteRenderer>().material;
         material.SetFloat("_Fill", 0f);
+       
     }
-
+    private void OnDisable()
+    {
+        Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
+        
+        Vector2 pos = Vector2.zero;
+        pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
+        pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
+        gameObject.SetActive(true);
+        Instantiate(gameObject, pos, Quaternion.identity);
+    }
 
     // TODO:    na wejœciu pokazuje pasek progresu
     //          na wyjœciu ukrywa pasek progresu
@@ -30,8 +40,13 @@ public class Toy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            digging = true;
             
+            digging = true;
+
+            collision.gameObject.GetComponent<CharacterController>().toyMaterial = material;
+            collision.gameObject.GetComponent<CharacterController>().digTime = digTime;
+            collision.gameObject.GetComponent<CharacterController>().toyDigSide = gameObject;
+
         }
     }
 
@@ -44,35 +59,6 @@ public class Toy : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.G))
-        {
-            CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
-            if (digging)
-            {
-                DigToy();
-            }
-        }
-       
-    }
 
-    public void DigToy()
-    {
-        material.SetFloat("_Fill", diggingTime / digTime);
-        diggingTime += Time.deltaTime;
-        
-        if (diggingTime >= digTime)
-        {
-           
-            Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
 
-            Vector2 pos = Vector2.zero;
-            pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
-            pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
-            Instantiate(gameObject, pos, Quaternion.identity);
-            Destroy(gameObject);
-            CharacterController.SetAnimation(CharacterController.PlayerStates.Idle);
-        }
-    }
 }

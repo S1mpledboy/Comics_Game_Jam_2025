@@ -6,15 +6,17 @@ using TMPro;
 public class CharacterController : MonoBehaviour
 {
     float _horizontalMovement, _verticalMovement;
-    public float  currentspeed;
+    public float  currentspeed, digTime;
     private bool canRoll = true;
     private float speed = 1f;
-    private float rollTime; // how long can roll
+    private float rollTime, elapsedTimeOfDigging; // how long can roll
     Rigidbody2D rigidbody;
+    public GameObject toyDigSide;
     static Animator _animator;
     [SerializeField] TextMeshProUGUI _helperSignsText;
+    public Material toyMaterial;
     public int _helperSignsAmount = 0;
-    [SerializeField] GameObject _helperSignPrefab;
+    [SerializeField] GameObject _helperSignPrefab, _holePrefab;
     public bool isShielded = false;
     public enum PlayerStates
     {
@@ -29,6 +31,7 @@ public class CharacterController : MonoBehaviour
         _animator = GetComponent<Animator>();
         SetAnimation(PlayerStates.Idle);
         UpdateHelpersSign();
+        
 
     }
  
@@ -39,7 +42,31 @@ public class CharacterController : MonoBehaviour
         _verticalMovement = Input.GetAxis("Vertical");
         PlaceSign();
         CheckSpeed();
-        
+        TryDig();
+    }
+    void TryDig()
+    {
+        if (!Input.GetKey(KeyCode.G)) return;
+       SetAnimation(PlayerStates.Diging);
+        if (Toy.digging)
+        {
+            toyMaterial.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
+            elapsedTimeOfDigging += Time.deltaTime;
+
+            if (elapsedTimeOfDigging >= digTime)
+            {
+                elapsedTimeOfDigging = 0;
+                toyDigSide.gameObject.SetActive(false);
+                SetAnimation(PlayerStates.Idle);
+            } 
+        }
+        else
+        {
+            GameObject hole = Instantiate(_holePrefab, transform.position, transform.rotation);
+            Material holeMaterial = hole.GetComponent<SpriteRenderer>().material;
+            holeMaterial.SetFloat("_Fill", 0f);
+            
+        }
     }
     void CheckSpeed()
     {

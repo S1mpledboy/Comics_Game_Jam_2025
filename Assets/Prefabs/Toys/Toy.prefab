@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
+  holePrefab: {fileID: 20752679740391938, guid: d99ac74e4428fa845a021ffeb927e443, type: 3}
   toysSprites:
   - {fileID: 21300000, guid: adcc08db608ac2445bee6e76afc7b477, type: 3}
   - {fileID: 21300000, guid: a8388b0107fab1a44a0c4c6164dc1f70, type: 3}

@@ -103,9 +103,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentspeed: 10
+  digTime: 0
+  toyDigSide: {fileID: 0}
   _helperSignsText: {fileID: 6967176267996775699}
+  toyMaterial: {fileID: 0}
   _helperSignsAmount: 1
   _helperSignPrefab: {fileID: 6762921299256070938, guid: a807ce4f24b5429439ab5ecf30a18808, type: 3}
+  _holePrefab: {fileID: 20752679740391938, guid: d99ac74e4428fa845a021ffeb927e443, type: 3}
+  isShielded: 0
 --- !u!50 &2708174891349093629
 Rigidbody2D:
   serializedVersion: 4
