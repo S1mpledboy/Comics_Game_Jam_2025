@@ -7,7 +7,8 @@ public class Sign : MonoBehaviour
 {
     IEnumerator corutine;
     protected float delaytime;
-    protected virtual void SignAbillity(CharacterController player)
+    protected CharacterController _player;
+    protected virtual void SignAbillity()
     {
 
     }
@@ -15,7 +16,11 @@ public class Sign : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SignAbillity(collision.gameObject.GetComponent<CharacterController>());
+            if(_player == null)
+            {
+                _player = collision.gameObject.GetComponent<CharacterController>();
+            }
+            SignAbillity();
             transform.position = new Vector3(0, 0, 300f);
             corutine = WaitForSeconds(delaytime);
             StartCoroutine(corutine);
