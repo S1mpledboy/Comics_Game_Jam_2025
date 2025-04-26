@@ -171,6 +171,7 @@ public class CharacterController : MonoBehaviour
                 elapsedTimeOfDigging = 0;
                 toyDigSide.gameObject.SetActive(false);
                 SetAnimation(PlayerStates.Idle);
+                collectedItems++;
             } 
         }
         else
