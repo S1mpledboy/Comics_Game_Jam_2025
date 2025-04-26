@@ -22,6 +22,8 @@ public class CharacterController : MonoBehaviour
     public bool isShielded = false;
     private SpriteRenderer shield;
 
+    private bool _isRolling = false;
+
     private int health = 5;
     public enum PlayerStates
     {
@@ -104,14 +106,14 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
         {
             SetAnimation(PlayerStates.Doging);
-            rigidbody.AddForce(new Vector2(_horizontalMovement, _verticalMovement)*10f, ForceMode2D.Force);
+            //rigidbody.AddForce(new Vector2(_horizontalMovement, _verticalMovement)*10f, ForceMode2D.Force);
             _horizontalMovement = _verticalMovement = 0;
             print("Roll");
             
             canRoll = false;
-            //speed = 1.7f;
+            _isRolling = true;
+            speed = 1.7f;
             rollTime = 0.2f;
-
         }
         if (!canRoll && rollTime > 0f)
         {
@@ -121,13 +123,15 @@ public class CharacterController : MonoBehaviour
                 speed = 1f;
                 canRoll = true;
                 rollTime = 0f;
+                _isRolling = false;
             }
         }
-        if (_horizontalMovement == 0 && _verticalMovement == 0) 
+        if (_horizontalMovement == 0 && _verticalMovement == 0 && !_isRolling) 
         {
+            print("Idle");
             SetAnimation(PlayerStates.Idle);
             return;
-        }else if (_horizontalMovement != 0 && _verticalMovement != 0)
+        }else if (_horizontalMovement != 0 || _verticalMovement != 0)
         {
             SetAnimation(PlayerStates.Move);
             Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
@@ -178,7 +182,7 @@ public class CharacterController : MonoBehaviour
         
         if(health == 0)
         {
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
         }
     }
 }
