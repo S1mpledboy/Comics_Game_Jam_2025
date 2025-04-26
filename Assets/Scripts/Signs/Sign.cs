@@ -30,7 +30,7 @@ public class Sign : MonoBehaviour
             corutine = WaitForSeconds(delaytime);
             StartCoroutine(corutine);
             cureentpos = transform.position;
-            transform.position = new Vector3(0f, 0f, 300f);
+            transform.position = new Vector3(300f, 300f, 300f);
             GameObject scoreNumber = Instantiate(scoreOnBoardOb, new Vector3(cureentpos.x, cureentpos.y + 1, cureentpos.z), Quaternion.identity);
             float randomColor = Random.Range(0, 255);
             scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = addedSCore.ToString();
