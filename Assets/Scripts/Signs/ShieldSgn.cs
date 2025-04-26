@@ -11,6 +11,7 @@ public class ShieldSgn : Sign
     }
     protected override void SignAbillity()
     {
+        print(_player);
         _player.isShielded = true;
         _player.shield.gameObject.SetActive(true);
         _player.PlayShieldHeartAnimation("Shield");
