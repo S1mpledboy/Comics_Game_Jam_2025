@@ -78,7 +78,8 @@ public class CharacterController : MonoBehaviour
         }
         if (valueOfChange < 0)
         {
-            playerSFX.PlayOneShot(damageSFX);
+            AudioSource.PlayClipAtPoint(damageSFX, transform.position);
+            
             herarts.Reverse();
             foreach (GameObject heart in herarts)
             {
@@ -98,7 +99,8 @@ public class CharacterController : MonoBehaviour
         }
         else if (valueOfChange>0)
         {
-            playerSFX.PlayOneShot(healSFX);
+            AudioSource.PlayClipAtPoint(healSFX, transform.position);
+            
             foreach (GameObject heart in herarts)
             {
                 if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Damage"].sprite)
@@ -204,8 +206,8 @@ public class CharacterController : MonoBehaviour
         // roll
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
         {
-            playerSFX.PlayOneShot(dodgeSFX);
-            SetAnimation(PlayerStates.Doging);
+            AudioSource.PlayClipAtPoint(dodgeSFX, transform.position);
+            SetAnimation(PlayerStates.Doging);  
             canRoll = false;
             _isRolling = true;
             speed = 1.7f;
@@ -231,7 +233,7 @@ public class CharacterController : MonoBehaviour
     void TryDig()
     {
        SetAnimation(PlayerStates.Diging);
-        playerSFX.Stop();
+        
         playerSFX.clip = diggingSFX;
         playerSFX.Play();
         if (Toy.digging)
@@ -299,7 +301,7 @@ public class CharacterController : MonoBehaviour
         }else if ((_horizontalMovement != 0 || _verticalMovement != 0) && !_isRolling)
         {
             SetAnimation(PlayerStates.Move);
-            playerSFX.Stop();
+            
             playerSFX.clip = walkSFX;
             playerSFX.Play();
             Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
