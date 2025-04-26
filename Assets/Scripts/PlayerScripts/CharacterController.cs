@@ -47,6 +47,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] TextMeshProUGUI _itemsCountGameOverText;
     [SerializeField] TextMeshProUGUI _timerGameOverText;
 
+    [SerializeField] GameObject diggingPlace;
+    Vector2 digPos;
+
     int minutes, seconds;
     public enum PlayerStates
     {
@@ -162,6 +165,16 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit && hit.collider.gameObject.CompareTag("Board"))
+        {
+            digPos = hit.point - (Vector2)transform.position;
+            digPos = digPos.normalized * 1.5f;
+            digPos = digPos + (Vector2)transform.position + new Vector2(0.5f, 0f);
+
+            diggingPlace.transform.position = digPos;
+        }
+
         timeToEndGame += Time.deltaTime;
         int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
         int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
@@ -192,7 +205,7 @@ public class CharacterController : MonoBehaviour
        SetAnimation(PlayerStates.Diging);
         if (Toy.digging)
         {
-            
+            print("Kopie");
             toyMaterialDirt.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
             elapsedTimeOfDigging += Time.deltaTime;
 
@@ -207,7 +220,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            GameObject hole = Instantiate(_holePrefab, transform.position, transform.rotation);
+            GameObject hole = Instantiate(_holePrefab, digPos, transform.rotation);
             Material holeMaterial = hole.GetComponent<SpriteRenderer>().material;
             holeMaterial.SetFloat("_Fill", 0f);
             
