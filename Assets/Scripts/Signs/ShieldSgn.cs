@@ -15,7 +15,7 @@ public class ShieldSgn : Sign
         
         _player.isShielded = true;
         _player.shield.gameObject.SetActive(true);
-        _player.playerSFX.PlayOneShot(_player.shieldSFX);
+        AudioSource.PlayClipAtPoint(_player.shieldSFX,transform.position);
         _player.PlayShieldHeartAnimation("Shield");
     }
     protected override void RevertEffectOfSign()
