@@ -13,8 +13,16 @@ public class StopSign : Sign
     }
     protected override void SignAbillity()
     {
-        reduceAmuont = _player.currentspeed - (_player.currentspeed * 0.7f);
-        _player.currentspeed -= reduceAmuont;
+        if (!_player.isSlowed)
+        {
+            reduceAmuont = _player.currentspeed - (_player.currentspeed * 0.7f);
+            _player.currentspeed -= reduceAmuont;
+            _player.isShielded = true;
+        }else if (_player.isSlowed)
+        {
+            RestartCorutine();
+        }
+
     }
     protected override void RevertEffectOfSign()
     {

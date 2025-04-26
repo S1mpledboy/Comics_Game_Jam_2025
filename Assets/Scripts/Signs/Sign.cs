@@ -27,6 +27,11 @@ public class Sign : MonoBehaviour
             transform.position = new Vector3(0f, 0f, 300f);
         }
     }
+    protected void RestartCorutine()
+    {
+        StopCoroutine(corutine);
+        StartCoroutine(corutine);
+    }
     protected virtual void RevertEffectOfSign()
     {
         Destroy(gameObject);
