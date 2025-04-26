@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour
 {
@@ -157,6 +158,10 @@ public class CharacterController : MonoBehaviour
     public void ChangeHealth(int healthVal)
     {
         health = Mathf.Clamp(health + healthVal, 0, 5);
-
+        
+        if(health == 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }
