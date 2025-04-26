@@ -107,7 +107,7 @@ public class CharacterController : MonoBehaviour
         // roll
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
         {
-            //SetAnimation(PlayerStates.Doging);
+            SetAnimation(PlayerStates.Doging);
             //rigidbody.AddForce(new Vector2(_horizontalMovement, _verticalMovement)*10f, ForceMode2D.Force);
             //_horizontalMovement = _verticalMovement = 0;
             print("Roll");
@@ -115,8 +115,7 @@ public class CharacterController : MonoBehaviour
             canRoll = false;
             _isRolling = true;
             speed = 1.7f;
-            rollTime = 0.2f;
-            print(rigidbody.velocity);
+            rollTime = 0.5f;
         }
         if (!canRoll && rollTime > 0f)
         {
@@ -128,6 +127,8 @@ public class CharacterController : MonoBehaviour
                 rollTime = 0f;
                 _isRolling = false;
             }
+            Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
+            rigidbody.MovePosition(transform.position + directon * (speed * currentspeed * Time.deltaTime));
         }
         if (_horizontalMovement == 0 && _verticalMovement == 0 && !_isRolling) 
         {
