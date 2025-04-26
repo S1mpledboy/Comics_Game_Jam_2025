@@ -16,6 +16,7 @@ public class Sign : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             SignAbillity(collision.gameObject.GetComponent<CharacterController>());
+            transform.position = new Vector3(0, 0, 300f);
             corutine = WaitForSeconds(delaytime);
             StartCoroutine(corutine);
         }
@@ -27,7 +28,6 @@ public class Sign : MonoBehaviour
     IEnumerator WaitForSeconds(float delaytime = 3f)
     {
         yield return new WaitForSeconds(delaytime);
-        print("Coroutine ended: " + Time.time + " seconds");
         RevertEffectOfSign();
     }
 }
