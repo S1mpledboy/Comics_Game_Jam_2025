@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StopSign : Sign
 {
-
-    float reduceAmuont;
     float _playersPrevSpeed;
     private void Start()
     {
