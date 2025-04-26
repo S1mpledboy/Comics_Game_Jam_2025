@@ -48,6 +48,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] TextMeshProUGUI _timerGameOverText;
 
     [SerializeField] GameObject diggingPlace;
+    [SerializeField] Image diggingCooldownBar;
+    private float diggingCooldown = 1f;
+    private bool canDigging = true;
     Vector2 digPos;
 
     int minutes, seconds;
@@ -183,10 +186,11 @@ public class CharacterController : MonoBehaviour
 
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
-        if (Input.GetMouseButton(0)) 
+        if (Input.GetMouseButton(0) && canDigging) 
         {
             TryDig();
             _horizontalMovement = _verticalMovement = 0;
+            DiggingStartCooldown();
         }
         // roll
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
@@ -199,6 +203,20 @@ public class CharacterController : MonoBehaviour
         }
         PlaceSign();
         CheckSpeed();
+    }
+
+    private async Task DiggingStartCooldown()
+    {
+        canDigging = false;
+        float t = 0f;
+        while (t < diggingCooldown)
+        {
+            t+= Time.deltaTime;
+            diggingCooldownBar.fillAmount = t / diggingCooldown;
+
+            await Task.Yield();
+        }
+        canDigging = true;
     }
     void TryDig()
     {
