@@ -66,10 +66,9 @@ public class CharacterController : MonoBehaviour
         {
             index = health;
         }
-        herarts[index].gameObject.GetComponent<Animator>().enabled = true;
         if (valueOfChange < 0)
         {
-
+            print("damage");
             herarts[index].gameObject.GetComponent<Image>().sprite = heartsSpritesDic["Damage"].sprite;
 
         }
@@ -118,7 +117,7 @@ public class CharacterController : MonoBehaviour
     {
         foreach(GameObject heart in herarts)
         {
-            if(heart.gameObject.GetComponent<SpriteRenderer>().sprite != heartsSpritesDic["Damage"])
+            if(heart.gameObject.GetComponent<Image>().sprite != heartsSpritesDic["Damage"].sprite)
             {
                 heart.gameObject.GetComponent<Image>().sprite = heartsSpritesDic[hearatName].sprite;
             }
