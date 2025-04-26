@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Toy : MonoBehaviour
 {
-    [SerializeField] GameObject boardGo;
+    [SerializeField] GameObject boardGo, scoreOb;
     [SerializeField] Sprite[] toysSprites;
     private int randomSprite;
 
@@ -62,6 +63,10 @@ public class Toy : MonoBehaviour
         Vector2 pos = Vector2.zero;
         pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
         pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
+        GameObject scoreNumber = Instantiate(scoreOb, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        scoreNumber.transform .GetChild(0).GetComponent<TextMeshProUGUI>().text = 50f.ToString();
+        CharacterController.score += 50f;
+        Destroy(scoreNumber, 1f);
         gameObject.SetActive(true);
         Instantiate(gameObject, pos, Quaternion.identity);
     }

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
 
 public class Sign : MonoBehaviour
 {
     IEnumerator corutine;
     protected float delaytime;
     protected CharacterController _player;
+    [SerializeField] protected GameObject scoreOnBoardOb;
     protected virtual void SignAbillity()
     {
 
@@ -29,7 +32,12 @@ public class Sign : MonoBehaviour
     }
     protected virtual void RevertEffectOfSign()
     {
-        Destroy(gameObject);
+        GameObject scoreNumber = Instantiate(scoreOnBoardOb, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(Random.Range(0,255), Random.Range(0, 255), Random.Range(0, 255));
+        scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = 5f.ToString();
+        CharacterController.score += 5f;
+        Destroy(scoreNumber, 1f);
+        Destroy(gameObject, 1f);
     }
     IEnumerator WaitForSeconds(float delaytime = 3f)
     {

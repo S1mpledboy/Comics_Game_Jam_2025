@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StopSign : Sign
 {
@@ -29,7 +30,12 @@ public class StopSign : Sign
     protected override void RevertEffectOfSign()
     {
         _player.currentspeed = _playersPrevSpeed;
-        base.RevertEffectOfSign();
+        GameObject scoreNumber = Instantiate(scoreOnBoardOb, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(250, 3, 2);
+        scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "-10";
+        CharacterController.score -= 10f;
+        Destroy(scoreNumber, 1f);
+        Destroy(gameObject, 1f);
     }
 
 }
