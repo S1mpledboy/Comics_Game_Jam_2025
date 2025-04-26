@@ -36,7 +36,7 @@ public class CharacterController : MonoBehaviour
     {
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
-        if (Input.GetKeyDown(KeyCode.F)&& _helperSignsAmount >0)
+        if (Input.GetKeyDown(KeyCode.F) && _helperSignsAmount >0)
         {
             _helperSignsAmount--;
             UpdateHelpersSign();

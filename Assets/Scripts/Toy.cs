@@ -46,17 +46,22 @@ public class Toy : MonoBehaviour
 
     private void Update()
     {
-        if (digging)
+        if (Input.GetKey(KeyCode.G))
         {
-            DigToy();
+            CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
+            if (digging)
+            {
+                DigToy();
+            }
         }
+       
     }
 
     public void DigToy()
     {
         material.SetFloat("_Fill", diggingTime / digTime);
         diggingTime += Time.deltaTime;
-        CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
+        
         if (diggingTime >= digTime)
         {
            
