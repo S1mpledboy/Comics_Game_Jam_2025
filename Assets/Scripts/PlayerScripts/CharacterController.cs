@@ -31,12 +31,13 @@ public class CharacterController : MonoBehaviour
     private bool _isRolling = false;
     public int collectedItems = 0;
     public static float score;
-    private int health = 5;
+    private int health = 4;
     public float _helperSignsAmount = 3f;
     public static float timeToEndGame = 0;
 
+    AudioSource playerSFX;
     private bool canGlow = true;
-
+    [SerializeField] AudioClip walkSFX, healSFX, shieldSFX, dodgeSFX, damageSFX,diggingSFX;
     [SerializeField] Canvas gameplayCanvas;
     [SerializeField] public TextMeshProUGUI _scoreText;
     [SerializeField] TextMeshProUGUI _timerText;
@@ -77,6 +78,7 @@ public class CharacterController : MonoBehaviour
         }
         if (valueOfChange < 0)
         {
+            playerSFX.PlayOneShot(damageSFX);
             herarts.Reverse();
             foreach (GameObject heart in herarts)
             {
@@ -96,6 +98,7 @@ public class CharacterController : MonoBehaviour
         }
         else if (valueOfChange>0)
         {
+            playerSFX.PlayOneShot(healSFX);
             foreach (GameObject heart in herarts)
             {
                 if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Damage"].sprite)
@@ -121,8 +124,6 @@ public class CharacterController : MonoBehaviour
 
     }
 
-    
-
     private void Awake()
     {
         OnTakeDamage += TakeDamage;
@@ -141,6 +142,8 @@ public class CharacterController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         shield.gameObject.SetActive(false);
+        playerSFX = GetComponent<AudioSource>();
+
         SetAnimation(PlayerStates.Idle);
         heartsSpritesDic.Add("Heal", heartsSp[0]);
         heartsSpritesDic.Add("Damage", heartsSp[1]);
@@ -199,6 +202,7 @@ public class CharacterController : MonoBehaviour
         // roll
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
         {
+            playerSFX.PlayOneShot(dodgeSFX);
             SetAnimation(PlayerStates.Doging);
             canRoll = false;
             _isRolling = true;
@@ -225,6 +229,9 @@ public class CharacterController : MonoBehaviour
     void TryDig()
     {
        SetAnimation(PlayerStates.Diging);
+        playerSFX.Stop();
+        playerSFX.clip = diggingSFX;
+        playerSFX.Play();
         if (Toy.digging)
         {
             print("Kopie");
@@ -235,9 +242,12 @@ public class CharacterController : MonoBehaviour
             {
                 elapsedTimeOfDigging = 0;
                 toyDigSide.gameObject.SetActive(false);
+                playerSFX.Stop();
                 SetAnimation(PlayerStates.Idle);
+
                 collectedItems++;
                 _itemsCountText.text = collectedItems.ToString();
+
             } 
         }
         else
@@ -245,7 +255,8 @@ public class CharacterController : MonoBehaviour
             GameObject hole = Instantiate(_holePrefab, digPos, transform.rotation);
             Material holeMaterial = hole.GetComponent<SpriteRenderer>().material;
             holeMaterial.SetFloat("_Fill", 0f);
-            
+            playerSFX.Stop();
+
         }
     }
     void CheckSpeed()
@@ -286,6 +297,9 @@ public class CharacterController : MonoBehaviour
         }else if ((_horizontalMovement != 0 || _verticalMovement != 0) && !_isRolling)
         {
             SetAnimation(PlayerStates.Move);
+            playerSFX.Stop();
+            playerSFX.clip = walkSFX;
+            playerSFX.Play();
             Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
             rigidbody.MovePosition(transform.position + directon * (speed * currentspeed * Time.deltaTime));
         }
