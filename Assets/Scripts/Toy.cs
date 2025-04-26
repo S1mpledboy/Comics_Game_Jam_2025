@@ -31,13 +31,14 @@ public class Toy : MonoBehaviour
     //          na wyjœciu ukrywa pasek progresu
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("DigginPlace"))
         {
+            print("moze kopac");
             digging = true;
-            collision.gameObject.GetComponent<CharacterController>().toyDigSide = gameObject;
-            collision.gameObject.GetComponent<CharacterController>().digTime = digTime;
-            collision.gameObject.GetComponent<CharacterController>().toyMaterialBar = materialBar;
-            collision.gameObject.GetComponent<CharacterController>().toyMaterialDirt = materialDirt;
+            collision.gameObject.transform.parent.GetComponent<CharacterController>().toyDigSide = gameObject;
+            collision.gameObject.transform.parent.GetComponent<CharacterController>().digTime = digTime;
+            collision.gameObject.transform.parent.GetComponent<CharacterController>().toyMaterialBar = materialBar;
+            collision.gameObject.transform.parent.GetComponent<CharacterController>().toyMaterialDirt = materialDirt;
 
 
         }
@@ -45,7 +46,8 @@ public class Toy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        print("Wychodzi");
+        if (collision.gameObject.CompareTag("DigginPlace"))
         {
             digging = false;
             
