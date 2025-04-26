@@ -14,7 +14,8 @@ public class CharacterController : MonoBehaviour
     public GameObject toyDigSide;
     static Animator _animator;
     [SerializeField] TextMeshProUGUI _helperSignsText;
-    public Material toyMaterial;
+    public Material toyMaterialBar;
+    public Material toyMaterialDirt;
     public int _helperSignsAmount = 0;
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
     public bool isShielded = false;
@@ -50,7 +51,8 @@ public class CharacterController : MonoBehaviour
        SetAnimation(PlayerStates.Diging);
         if (Toy.digging)
         {
-            toyMaterial.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
+            toyMaterialBar.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
+            toyMaterialDirt.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
             elapsedTimeOfDigging += Time.deltaTime;
 
             if (elapsedTimeOfDigging >= digTime)

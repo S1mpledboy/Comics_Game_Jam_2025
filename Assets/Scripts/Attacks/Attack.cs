@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour
     protected GameObject playerGo;
     [SerializeField] GameObject mapGo;
     protected GameObject mapGoAttack;
-    [SerializeField] Sprite attackWarningSprite;
+    [SerializeField] Texture2D sprite;
     protected Bounds mapBounds;
     protected Vector2 playerPos;
 
@@ -25,6 +25,9 @@ public class Attack : MonoBehaviour
     protected float radius = 5f; // how close to player can attack
     protected float attackRadius = 3f; // area where can deal damage
     protected SpriteRenderer spriteRenderer;
+
+    protected Material materialDangerZone;
+    protected Material materialAttackObject;
 
 
     protected virtual void Awake()
@@ -35,6 +38,11 @@ public class Attack : MonoBehaviour
         playerGo = FindObjectOfType<CharacterController>().gameObject;
         mapBounds = mapGo.GetComponent<SpriteRenderer>().bounds;
         playerPos = playerGo.transform.position;
+
+        materialDangerZone = GetComponent<SpriteRenderer>().material;
+        materialAttackObject = transform.GetChild(0).GetComponent<SpriteRenderer>().material;
+
+        materialAttackObject.SetTexture("_Sprite", sprite);
 
         // set position
         //transform.position = CalculatePosition();
@@ -80,19 +88,19 @@ public class Attack : MonoBehaviour
 
         await WaitForTime(0.5f);
 
-        Destroy(gameObject);
+        await FadeAway();
     }
 
     protected virtual async Task ChargeAttack()
     {
         //spriteRenderer.sprite = attackWarningSprite;
         transform.localScale = new Vector2(attackRadius, attackRadius);
+        transform.GetChild(0).localScale = new Vector2(1f, 1f);
         float t = 0f;
-        Material material = GetComponent<SpriteRenderer>().material;
 
         while (t < chargeTime)
         {
-            material.SetFloat("_Fill", t);
+            materialDangerZone.SetFloat("_Fill", t);
             t += Time.deltaTime;
             await Task.Yield();
         }
@@ -101,7 +109,6 @@ public class Attack : MonoBehaviour
     protected virtual async Task DropDownAttack()
     {
         GameObject attackObjet = transform.GetChild(0).gameObject;
-        attackObjet.transform.localScale = new Vector2(1f, 1f);
         Vector2 startPos = attackObjet.transform.position;
         Vector2 endPos = transform.position;
         float t = 0f;
@@ -132,5 +139,19 @@ public class Attack : MonoBehaviour
             t += Time.deltaTime;
             await Task.Yield();
         }
+    }
+
+    protected virtual async Task FadeAway()
+    {
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime;
+            materialDangerZone.SetFloat("_Dirt", t);
+            materialAttackObject.SetFloat("_Dirt", t);
+
+            await Task.Yield();
+        }
+        Destroy(gameObject);
     }
 }

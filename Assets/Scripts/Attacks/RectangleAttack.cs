@@ -21,6 +21,7 @@ public class RectangleAttack : Attack
     {
         //spriteRenderer.sprite = attackWarningSprite;
         transform.localScale = new Vector2(attackRadius, attackRadius * 2);
+        transform.GetChild(0).localScale = new Vector2(1f, 2f);
         float t = 0f;
         Color color = spriteRenderer.color;
 

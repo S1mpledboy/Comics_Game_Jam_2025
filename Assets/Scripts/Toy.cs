@@ -36,7 +36,8 @@ public class Toy : MonoBehaviour
             digging = true;
             collision.gameObject.GetComponent<CharacterController>().toyDigSide = gameObject;
             collision.gameObject.GetComponent<CharacterController>().digTime = digTime;
-            collision.gameObject.GetComponent<CharacterController>().toyMaterial = materialBar;
+            collision.gameObject.GetComponent<CharacterController>().toyMaterialBar = materialBar;
+            collision.gameObject.GetComponent<CharacterController>().toyMaterialDirt = materialDirt;
 
 
         }
