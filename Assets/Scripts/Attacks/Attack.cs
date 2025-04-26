@@ -96,20 +96,28 @@ public class Attack : MonoBehaviour
     protected virtual async Task ChargeAttack()
     {
         //spriteRenderer.sprite = attackWarningSprite;
-        transform.localScale = new Vector2(attackRadius, attackRadius);
-        transform.GetChild(0).localScale = new Vector2(1f, 1f);
+        //transform.localScale = new Vector2(attackRadius, attackRadius);
+        //transform.GetChild(0).localScale = new Vector2(1f, 1f);
+
+        GameObject attackObjet = transform.GetChild(0).gameObject;
+        Vector2 startPos = attackObjet.transform.position;
+        Vector2 endPos = transform.position;
+
+        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+
         float t = 0f;
 
-        while (t < chargeTime)
+        while (t < 1f)
         {
             materialDangerZone.SetFloat("_Fill", t);
+            attackObjet.transform.position = Vector2.Lerp(startPos, endPos, t);
             t += Time.deltaTime;
             await Task.Yield();
         }
     }
 
     protected virtual async Task DropDownAttack()
-    {
+    {/*
         GameObject attackObjet = transform.GetChild(0).gameObject;
         Vector2 startPos = attackObjet.transform.position;
         Vector2 endPos = transform.position;
@@ -123,6 +131,7 @@ public class Attack : MonoBehaviour
             attackObjet.transform.position = Vector2.Lerp(startPos, endPos, t);
             await Task.Yield();
         }
+        */
     }
 
     protected virtual void DealDamage()

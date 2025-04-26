@@ -17,21 +17,13 @@ public class RectangleAttack : Attack
 
     }
 
-    protected override async Task ChargeAttack()
+    protected override Task ChargeAttack()
     {
         //spriteRenderer.sprite = attackWarningSprite;
         transform.localScale = new Vector2(attackRadius, attackRadius * 2);
         transform.GetChild(0).localScale = new Vector2(1f, 2f);
-        float t = 0f;
-        Color color = spriteRenderer.color;
-
-        while (t < chargeTime)
-        {
-            color.a = t / chargeTime;
-            spriteRenderer.color = color;
-            t += Time.deltaTime;
-            await Task.Yield();
-        }
+        
+        return base.ChargeAttack();
     }
     /*
     protected override void DealDamage()

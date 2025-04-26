@@ -15,10 +15,11 @@ public class CircleAttack : Attack
         base.Awake();
     }
 
-    protected override Task DropDownAttack()
+    protected override Task ChargeAttack()
     {
+        transform.localScale = new Vector2(attackRadius, attackRadius);
         transform.GetChild(0).localScale = new Vector2(1.5f, 1.5f);
 
-        return base.DropDownAttack();
+        return base.ChargeAttack();
     }
 }
