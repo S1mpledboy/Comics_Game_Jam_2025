@@ -44,6 +44,8 @@ public class Attack : MonoBehaviour
 
         materialAttackObject.SetTexture("_Sprite", sprite);
 
+        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+
         // set position
         //transform.position = CalculatePosition();
 
@@ -112,6 +114,8 @@ public class Attack : MonoBehaviour
         Vector2 startPos = attackObjet.transform.position;
         Vector2 endPos = transform.position;
         float t = 0f;
+
+        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 
         while (t < 1f)
         {

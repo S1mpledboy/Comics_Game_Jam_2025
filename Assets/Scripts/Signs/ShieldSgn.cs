@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShieldSgn : Sign
 {
+    SpriteRenderer sprite;
     private void Start()
     {
         delaytime = 3f;

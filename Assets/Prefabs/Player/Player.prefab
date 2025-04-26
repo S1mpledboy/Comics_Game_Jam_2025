@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 20566867
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2d5bbdb95679e4f4db1041196bd11d1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -197,6 +197,8 @@ MonoBehaviour:
   _helperSignPrefab: {fileID: 6762921299256070938, guid: a807ce4f24b5429439ab5ecf30a18808, type: 3}
   _holePrefab: {fileID: 6079404872027252161, guid: d99ac74e4428fa845a021ffeb927e443, type: 3}
   isShielded: 0
+  isSlowed: 0
+  isSpeedBoosted: 0
   shield: {fileID: 6795611656449422683}
 --- !u!50 &2708174891349093629
 Rigidbody2D:
