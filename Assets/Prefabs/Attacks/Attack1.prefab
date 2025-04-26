@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3946972234937759220}
   - component: {fileID: 3009731510810604974}
-  - component: {fileID: 4893208552137771996}
+  - component: {fileID: -6960933777728117736}
   m_Layer: 0
   m_Name: Attack1
   m_TagString: Untagged
@@ -74,18 +74,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 30, y: 30}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4893208552137771996
+--- !u!114 &-6960933777728117736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +94,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7370090329815491240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fa4bdf145d28d449c8aafcbcc00680, type: 3}
+  m_Script: {fileID: 11500000, guid: 450d1b15f5cad62478edd9dcdf51309b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGo: {fileID: 0}
   mapGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
   attackWarningSprite: {fileID: 0}
+  attackGo: {fileID: 0}

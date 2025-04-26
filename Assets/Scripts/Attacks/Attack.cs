@@ -13,8 +13,7 @@ public class Attack : MonoBehaviour
     3)  po czasie ³adowania siê odpala
     4)  usuniêcie ze sceny
    */
-
-    [SerializeField] GameObject playerGo;
+    protected GameObject playerGo;
     [SerializeField] GameObject mapGo;
     [SerializeField] Sprite attackWarningSprite;
     protected Bounds mapBounds;
@@ -23,12 +22,14 @@ public class Attack : MonoBehaviour
     protected Vector2 position; // attack position
     protected float chargeTime = 2f; // time before activate dmg
     protected float radius = 5f; // how close to player can attack
+    protected float attackRadius = 3f; // area where can deal damage
     protected SpriteRenderer spriteRenderer;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
 
         playerGo = FindObjectOfType<CharacterController>().gameObject;
         mapBounds = mapGo.GetComponent<SpriteRenderer>().bounds;
@@ -41,7 +42,15 @@ public class Attack : MonoBehaviour
 
     }
 
-    private Vector2 CalculatePosition()
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            print("Damage");
+        }
+    }
+
+    protected Vector2 CalculatePosition()
     {
         // attack in some range near player
         position = playerPos + new Vector2(
@@ -60,16 +69,21 @@ public class Attack : MonoBehaviour
         return position;
     }
 
-    private async void StartAttacking()
+    protected virtual async void StartAttacking()
     {
         await ChargeAttack();
+
+        DealDamage();
+
+        await WaitForTime(0.5f);
 
         Destroy(gameObject);
     }
 
-    private async Task ChargeAttack()
+    protected virtual async Task ChargeAttack()
     {
         //spriteRenderer.sprite = attackWarningSprite;
+        transform.localScale = new Vector2 (attackRadius, attackRadius);
         float t = 0f;
         Color color = spriteRenderer.color;
 
@@ -77,6 +91,26 @@ public class Attack : MonoBehaviour
         {
             color.a = t / chargeTime;
             spriteRenderer.color = color;
+            t += Time.deltaTime;
+            await Task.Yield();
+        }
+    }
+
+    protected virtual void DealDamage()
+    {
+        gameObject.AddComponent<CircleCollider2D>();
+        CircleCollider2D circleCollider = GetComponent<CircleCollider2D>();
+        circleCollider.enabled = false;
+        circleCollider.isTrigger = true;
+        circleCollider.radius = 0.5f;
+        circleCollider.enabled = true;
+    }
+
+    protected virtual async Task WaitForTime(float time)
+    {
+        float t = 0;
+        while (t < time)
+        {
             t += Time.deltaTime;
             await Task.Yield();
         }
