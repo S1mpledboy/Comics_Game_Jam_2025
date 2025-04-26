@@ -3361,6 +3361,22 @@ PrefabInstance:
       propertyPath: m_UseAutoMass
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6967176267996775699, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967176267996775699, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967176267996775699, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967176267996775699, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294309365
+      objectReference: {fileID: 0}
     - target: {fileID: 8604453048447063798, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
       propertyPath: m_IsActive
       value: 0
