@@ -140,7 +140,7 @@ public class CharacterController : MonoBehaviour
 
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.G)) 
+        if (Input.GetKey(KeyCode.E)) 
         {
             TryDig();
             _horizontalMovement = _verticalMovement = 0;
