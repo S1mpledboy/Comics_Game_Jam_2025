@@ -9,14 +9,16 @@ public class StopSign : Sign
     private void Start()
     {
         delaytime = 3f;
+        addedSCore = -10f;
     }
     protected override void SignAbillity()
     {
+        if(_player == null) return;
         if (!_player.isSlowed)
         {
             _playersPrevSpeed = _player.currentspeed;
             
-            _player.currentspeed = _player.currentspeed*0.5f;
+            _player.currentspeed = _player.currentspeed*0.7f;
             print(_player.currentspeed);
             _player.isSlowed = true;
         }else if (_player.isSlowed)

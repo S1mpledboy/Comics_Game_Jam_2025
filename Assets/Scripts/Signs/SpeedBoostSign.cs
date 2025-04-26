@@ -10,6 +10,7 @@ public class SpeedBoostSign : Sign
     private void Start()
     {
         delaytime = 3f;
+        addedSCore = 10;
     }
     protected override void SignAbillity()
     {
