@@ -55,7 +55,7 @@ public class Toy : MonoBehaviour
   
     private void OnDisable()
     {
-        Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
+        Bounds boardBounds = boardGo.transform.GetChild(0).GetComponent<SpriteRenderer>().bounds;
 
         Vector2 pos = Vector2.zero;
         pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);

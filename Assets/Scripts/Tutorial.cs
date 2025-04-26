@@ -57,7 +57,7 @@ public class Tutorial : MonoBehaviour
         {
             await Task.Yield();
         }
-        hintText.text = "Press E to dig";
+        hintText.text = "Hold E to dig";
         nextStep = false;
 
         while (!nextStep)
