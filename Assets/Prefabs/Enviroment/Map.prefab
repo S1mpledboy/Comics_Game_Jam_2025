@@ -134,4 +134,3 @@ MonoBehaviour:
   attacksGo:
   - {fileID: 7370090329815491240, guid: e201889d5dcf78749a7f39e769e98ae9, type: 3}
   - {fileID: 7370090329815491240, guid: 3c45a072179234149bb3feded0fdb1b8, type: 3}
-  - {fileID: 7370090329815491240, guid: dcfd7c5428933f14783ed5f950b9165a, type: 3}
