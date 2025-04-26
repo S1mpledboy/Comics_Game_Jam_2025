@@ -20,7 +20,7 @@ public class CharacterController : MonoBehaviour
     public Material toyMaterialDirt;
     public int _helperSignsAmount = 0;
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
-    public bool isShielded = false;
+    public bool isShielded = false, isSlowed = false, isSpeedBoosted;
     public SpriteRenderer shield;
 
     private bool _isRolling = false;

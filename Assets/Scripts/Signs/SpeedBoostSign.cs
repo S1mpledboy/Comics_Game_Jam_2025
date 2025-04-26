@@ -1,29 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using TMPro;
 using UnityEngine;
 
 public class SpeedBoostSign : Sign
 {
     float boostAmount = 5f;
-    float _playersPrevSpeed;
     private void Start()
     {
         delaytime = 3f;
     }
     protected override void SignAbillity()
     {
-        _playersPrevSpeed = _player.currentspeed;
-        _player.currentspeed += boostAmount;
-        if(_player.currentspeed > 15f)
+        if (!_player.isSpeedBoosted)
         {
-            _player.currentspeed = 15f;
+            _player.currentspeed += boostAmount;
+            if (_player.currentspeed > 15f)
+            {
+                _player.currentspeed = 15f;
+            }
+            _player.isSpeedBoosted = true;
         }
+        else if (_player.isSpeedBoosted)
+        {
+            RestartCorutine();
+        }
+
     }
     protected override void RevertEffectOfSign()
     {
-        if(_playersPrevSpeed!=_player.currentspeed)
-        _player.currentspeed -= boostAmount;
+        if (_player.isSpeedBoosted)
+        {
+            _player.currentspeed -= boostAmount;
+            _player.isSpeedBoosted = false;
+        }
         base.RevertEffectOfSign();
     }
 }
