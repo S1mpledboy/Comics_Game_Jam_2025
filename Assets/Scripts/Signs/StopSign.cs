@@ -17,7 +17,8 @@ public class StopSign : Sign
         {
             _playersPrevSpeed = _player.currentspeed;
             
-            _player.currentspeed = _player.currentspeed*0.7f;
+            _player.currentspeed = _player.currentspeed*0.5f;
+            print(_player.currentspeed);
             _player.isSlowed = true;
         }else if (_player.isSlowed)
         {

@@ -33,7 +33,7 @@ public class CharacterController : MonoBehaviour
 
     private int health = 5;
 
-    private float timeToEndGame = 2 * 60 + 1;
+    private float timeToEndGame = 0;
 
     [SerializeField] Canvas gameplayCanvas;
     [SerializeField] TextMeshProUGUI _helperSignsText;
@@ -167,7 +167,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         
-        timeToEndGame -= Time.deltaTime;
+        timeToEndGame += Time.deltaTime;
         int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
         int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
         _timerText.text = minutes + ":" + seconds;
@@ -197,7 +197,7 @@ public class CharacterController : MonoBehaviour
        SetAnimation(PlayerStates.Diging);
         if (Toy.digging)
         {
-            toyMaterialBar.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
+            
             toyMaterialDirt.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
             elapsedTimeOfDigging += Time.deltaTime;
 

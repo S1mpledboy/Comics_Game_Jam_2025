@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SpeedBoostSign : Sign
 {
-    float boostAmount = 2f;
+    float _playersPrevSpeed;
     private void Start()
     {
         delaytime = 3f;
@@ -15,7 +15,8 @@ public class SpeedBoostSign : Sign
     {
         if (!_player.isSpeedBoosted)
         {
-            _player.currentspeed += boostAmount;
+            _playersPrevSpeed = _player.currentspeed;
+            _player.currentspeed = _player.currentspeed*1.5f;
             if (_player.currentspeed > 12f)
             {
                 _player.currentspeed = 12f;
@@ -25,7 +26,6 @@ public class SpeedBoostSign : Sign
         else if (_player.isSpeedBoosted)
         {
             return;
-            base.RevertEffectOfSign();
         }
 
     }
@@ -33,7 +33,7 @@ public class SpeedBoostSign : Sign
     {
         if (_player.isSpeedBoosted)
         {
-            _player.currentspeed -= boostAmount;
+            _player.currentspeed = _playersPrevSpeed;
             _player.isSpeedBoosted = false;
         }
         base.RevertEffectOfSign();
