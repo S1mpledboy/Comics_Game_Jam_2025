@@ -8,7 +8,7 @@ public class CharacterController : MonoBehaviour
     float _horizontalMovement, _verticalMovement;
     public float  currentspeed;
     Rigidbody2D rigidbody;
-    Animator _animator;
+    static Animator _animator;
     public enum PlayerStates
     {
         Idle,
@@ -43,7 +43,7 @@ public class CharacterController : MonoBehaviour
         rigidbody.MovePosition(transform.position+directon*(currentspeed*Time.deltaTime));
     }
 
-    void SetAnimation(PlayerStates state)
+    public static void SetAnimation(PlayerStates state)
     {
         switch (state)
         {

@@ -12,16 +12,11 @@ public class Toy : MonoBehaviour
     private float diggingTime; // how long this toy was digging
     private bool digging = false; // is this item digging
 
-    private Material material;
-
     private void Awake()
     {
         // set random sprite
         randomSprite = Random.Range(0, toysSprites.Length);
         gameObject.GetComponent<SpriteRenderer>().sprite = toysSprites[randomSprite];
-
-        material = transform.GetChild(1).GetComponent<SpriteRenderer>().material;
-        material.SetFloat("_Fill", 0f);
     }
 
 
@@ -32,7 +27,7 @@ public class Toy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             digging = true;
-            print("Zbieram");
+            
         }
     }
 
@@ -41,7 +36,7 @@ public class Toy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             digging = false;
-            print("przesta³ zbieraæ");
+            
         }
     }
 
@@ -56,18 +51,18 @@ public class Toy : MonoBehaviour
     public void DigToy()
     {
         diggingTime += Time.deltaTime;
-        material.SetFloat("_Fill", diggingTime / digTime);
+        CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
         if (diggingTime >= digTime)
         {
-            print("Zebrano zabawkê");
+           
             Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
 
             Vector2 pos = Vector2.zero;
             pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
             pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
-            print(pos);
             Instantiate(gameObject, pos, Quaternion.identity);
             Destroy(gameObject);
+            CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
         }
     }
 }
