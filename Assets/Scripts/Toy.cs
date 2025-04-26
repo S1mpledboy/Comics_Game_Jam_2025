@@ -10,7 +10,7 @@ public class Toy : MonoBehaviour
 
     private float digTime = 2f; // time to get item
     private float diggingTime; // how long this toy was digging
-    private bool digging = false; // is this item digging
+    public static bool digging = false; // is this item digging
 
     private Material materialBar;
     private Material materialDirt;
@@ -34,7 +34,11 @@ public class Toy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             digging = true;
-            
+            collision.gameObject.GetComponent<CharacterController>().toyDigSide = gameObject;
+            collision.gameObject.GetComponent<CharacterController>().digTime = digTime;
+            collision.gameObject.GetComponent<CharacterController>().toyMaterial = materialBar;
+
+
         }
     }
 
@@ -47,35 +51,15 @@ public class Toy : MonoBehaviour
         }
     }
 
-    private void Update()
+  
+    private void OnDisable()
     {
-        if (Input.GetKey(KeyCode.G))
-        {
-            CharacterController.SetAnimation(CharacterController.PlayerStates.Diging);
-            if (digging)
-            {
-                DigToy();
-            }
-        }
-       
+        Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
+
+        Vector2 pos = Vector2.zero;
+        pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
+        pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
+        Instantiate(gameObject, pos, Quaternion.identity);
     }
 
-    public void DigToy()
-    {
-        materialDirt.SetFloat("_Fill", diggingTime / digTime);
-        diggingTime += Time.deltaTime;
-        
-        if (diggingTime >= digTime)
-        {
-           
-            Bounds boardBounds = boardGo.GetComponent<SpriteRenderer>().bounds;
-
-            Vector2 pos = Vector2.zero;
-            pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
-            pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
-            Instantiate(gameObject, pos, Quaternion.identity);
-            Destroy(gameObject);
-            CharacterController.SetAnimation(CharacterController.PlayerStates.Idle);
-        }
-    }
 }
