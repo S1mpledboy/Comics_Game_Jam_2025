@@ -116,7 +116,7 @@ public class CharacterController : MonoBehaviour
                 print(ex);
             }
             gameplayCanvas.gameObject.SetActive(false);
-
+            _itemsCountGameOverText.text = (collectedItems*timeToEndGame).ToString();
             Time.timeScale = 0;
         }
 
@@ -144,6 +144,7 @@ public class CharacterController : MonoBehaviour
         heartsSpritesDic.Add("Heal", heartsSp[0]);
         heartsSpritesDic.Add("Damage", heartsSp[1]);
         heartsSpritesDic.Add("Shield", heartsSp[2]);
+        //gameOverCanvas
 
 
         gameOverCanvas.gameObject.SetActive(false);
@@ -175,7 +176,7 @@ public class CharacterController : MonoBehaviour
 
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.E)) 
+        if (Input.GetMouseButton(0)) 
         {
             TryDig();
             _horizontalMovement = _verticalMovement = 0;
@@ -227,7 +228,7 @@ public class CharacterController : MonoBehaviour
     }
     void PlaceSign()
     {
-        if (Input.GetKeyDown(KeyCode.F) && _helperSignsAmount > 0)
+        if (Input.GetMouseButtonDown(1) && _helperSignsAmount > 0)
         {
             _helperSignsAmount--;
             UpdateHelpersSign();
