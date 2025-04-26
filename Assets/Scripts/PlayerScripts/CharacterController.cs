@@ -193,7 +193,8 @@ public class CharacterController : MonoBehaviour
         {
             TryDig();
             _horizontalMovement = _verticalMovement = 0;
-            DiggingStartCooldown();
+            if(!Toy.digging)
+                DiggingStartCooldown();
         }
         // roll
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
