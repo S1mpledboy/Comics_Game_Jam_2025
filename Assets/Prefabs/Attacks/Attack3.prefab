@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0, g: 0.054832935, b: 1, a: 1}
   m_FlipX: 0
@@ -97,7 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fa4bdf145d28d449c8aafcbcc00680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGo: {fileID: 0}
   mapGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
   attackWarningSprite: {fileID: 0}
-  attackGo: {fileID: 0}
