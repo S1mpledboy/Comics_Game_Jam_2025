@@ -174,7 +174,10 @@ public class CharacterController : MonoBehaviour
 
             diggingPlace.transform.position = digPos;
         }
-
+        if (currentspeed <= 0)
+        {
+            currentspeed = 2f;
+        }
         timeToEndGame += Time.deltaTime;
         int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
         int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
