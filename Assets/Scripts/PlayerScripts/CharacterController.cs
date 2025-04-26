@@ -175,12 +175,10 @@ public class CharacterController : MonoBehaviour
         }
         if (_horizontalMovement == 0 && _verticalMovement == 0 && !_isRolling) 
         {
-            print("Idle");
             SetAnimation(PlayerStates.Idle);
             return;
         }else if ((_horizontalMovement != 0 || _verticalMovement != 0) && !_isRolling)
         {
-            print("Move");
             SetAnimation(PlayerStates.Move);
             Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
             rigidbody.MovePosition(transform.position + directon * (speed * currentspeed * Time.deltaTime));
@@ -224,5 +222,10 @@ public class CharacterController : MonoBehaviour
         _helperSignsText.text = _helperSignsAmount.ToString();
     }
 
-
+    public void Reset()
+    {
+        StopAllCoroutines();
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+    }
 }

@@ -87,7 +87,7 @@ public class Attack : MonoBehaviour
 
         DealDamage();
 
-        await WaitForTime(0.5f);
+        await WaitForTime(0.1f);
 
         await FadeAway();
     }
@@ -146,6 +146,7 @@ public class Attack : MonoBehaviour
 
     protected virtual async Task FadeAway()
     {
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
         float t = 0f;
         while (t < 1f)
         {

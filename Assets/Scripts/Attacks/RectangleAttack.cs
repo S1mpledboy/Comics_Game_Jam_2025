@@ -33,13 +33,17 @@ public class RectangleAttack : Attack
             await Task.Yield();
         }
     }
+    /*
     protected override void DealDamage()
     {
+        
         gameObject.AddComponent<BoxCollider2D>();
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.enabled = false;
         boxCollider.isTrigger = true;
         boxCollider.size = new Vector2 (1f, 1f);
         boxCollider.enabled = true;
+        
     }
+    */
 }
