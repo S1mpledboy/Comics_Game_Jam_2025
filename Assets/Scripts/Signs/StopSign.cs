@@ -15,20 +15,21 @@ public class StopSign : Sign
     {
         if (!_player.isSlowed)
         {
-            reduceAmuont = _player.currentspeed - (_player.currentspeed * 0.7f);
-            _player.currentspeed -= reduceAmuont;
+            _playersPrevSpeed = _player.currentspeed;
+            
+            _player.currentspeed = _player.currentspeed*0.7f;
             _player.isSlowed = true;
         }else if (_player.isSlowed)
         {
-            return;
-            base.RevertEffectOfSign();
+            Destroy(gameObject);
+           return;
+           
         }
 
     }
     protected override void RevertEffectOfSign()
     {
-        if (_playersPrevSpeed != _player.currentspeed)
-            _player.currentspeed += reduceAmuont;
+        _player.currentspeed = _playersPrevSpeed;
         base.RevertEffectOfSign();
     }
 

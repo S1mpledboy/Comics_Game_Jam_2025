@@ -113,9 +113,9 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2282798952219065966}
+  - {fileID: 7498007174263821804}
   - {fileID: 7994380256637896414}
   - {fileID: 5067022349370333737}
-  - {fileID: 7498007174263821804}
   m_Father: {fileID: 1624423809649583020}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20cf2f529c26ad448e42bc80d0d9efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentspeed: 10
+  currentspeed: 7
   digTime: 0
   toyDigSide: {fileID: 0}
   toyMaterialBar: {fileID: 0}
@@ -2365,7 +2365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1328900266542951751, guid: 6aacb62a20eaf4a47bec4bf4bc6ff8c3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1328900266542951751, guid: 6aacb62a20eaf4a47bec4bf4bc6ff8c3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2472,7 +2472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1328900266542951751, guid: 6aacb62a20eaf4a47bec4bf4bc6ff8c3, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1328900266542951751, guid: 6aacb62a20eaf4a47bec4bf4bc6ff8c3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2579,7 +2579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1328900266542951751, guid: 6aacb62a20eaf4a47bec4bf4bc6ff8c3, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1328900266542951751, guid: 6aacb62a20eaf4a47bec4bf4bc6ff8c3, type: 3}
       propertyPath: m_AnchorMax.x
