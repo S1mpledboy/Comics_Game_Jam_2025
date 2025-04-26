@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using UnityEngine.UI;
+using JetBrains.Annotations;
 
 public class CharacterController : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] List<SpriteRenderer> heartsSp = new List<SpriteRenderer>();
     Dictionary<string, SpriteRenderer> heartsSpritesDic = new Dictionary<string, SpriteRenderer>();
     private bool _isRolling = false;
+    public int collectedItems = 0;
 
     private int health = 5;
 
