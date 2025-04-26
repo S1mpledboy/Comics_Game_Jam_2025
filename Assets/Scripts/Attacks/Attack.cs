@@ -47,6 +47,7 @@ public class Attack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (collision.GetComponent<CharacterController>().isShielded) return;
             print("Damage");
         }
     }
