@@ -7,13 +7,15 @@ using static UnityEngine.GraphicsBuffer;
 
 public class LocatedHelperSign : MonoBehaviour
 {
-
+    [SerializeField] GameObject _poleGo;
     private void OnEnable()
     {
         Transform toy = GameObject.FindGameObjectWithTag("Toy").transform;
         Vector3 look = transform.InverseTransformPoint(toy.transform.position);
-        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90;
+        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg;
         transform.Rotate(0, 0, angle);
+        Instantiate(_poleGo, transform.position, Quaternion.identity);
+        
     }
  
 }
