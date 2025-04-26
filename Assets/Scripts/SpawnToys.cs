@@ -21,7 +21,6 @@ public class SpawnToys : MonoBehaviour
     {
         
         Vector2 pos = Vector2.zero;
-        print(boardBounds.min.x + " " + boardBounds.min.y);
         pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
         pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
 
