@@ -116,7 +116,7 @@ public class CharacterController : MonoBehaviour
         {
             gameOverCanvas.gameObject.SetActive(true);
             gameplayCanvas.gameObject.SetActive(false);
-            Time.timeScale = 0;
+            
         }
 
     }
@@ -194,8 +194,7 @@ public class CharacterController : MonoBehaviour
         {
             TryDig();
             _horizontalMovement = _verticalMovement = 0;
-            if(!Toy.digging)
-                DiggingStartCooldown();
+            DiggingStartCooldown();
         }
         // roll
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
