@@ -74,6 +74,8 @@ public class Attack : MonoBehaviour
     {
         await ChargeAttack();
 
+        await DropDownAttack();
+
         DealDamage();
 
         await WaitForTime(0.5f);
@@ -84,15 +86,30 @@ public class Attack : MonoBehaviour
     protected virtual async Task ChargeAttack()
     {
         //spriteRenderer.sprite = attackWarningSprite;
-        transform.localScale = new Vector2 (attackRadius, attackRadius);
+        transform.localScale = new Vector2(attackRadius, attackRadius);
         float t = 0f;
-        Color color = spriteRenderer.color;
+        Material material = GetComponent<SpriteRenderer>().material;
 
         while (t < chargeTime)
         {
-            color.a = t / chargeTime;
-            spriteRenderer.color = color;
+            material.SetFloat("_Fill", t);
             t += Time.deltaTime;
+            await Task.Yield();
+        }
+    }
+
+    protected virtual async Task DropDownAttack()
+    {
+        GameObject attackObjet = transform.GetChild(0).gameObject;
+        attackObjet.transform.localScale = new Vector2(1f, 1f);
+        Vector2 startPos = attackObjet.transform.position;
+        Vector2 endPos = transform.position;
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime;
+            attackObjet.transform.position = Vector2.Lerp(startPos, endPos, t);
             await Task.Yield();
         }
     }
