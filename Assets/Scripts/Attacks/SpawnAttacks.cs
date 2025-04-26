@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class SpawnAttacks : MonoBehaviour
 {
     [SerializeField] GameObject[] attacksGo; // all type of attacks
+    [SerializeField] GameObject board;
 
 
     private Bounds boardBounds;
@@ -22,7 +23,7 @@ public class SpawnAttacks : MonoBehaviour
     private void Start()
     {
         spawnCooldown = spawnTime;
-        boardBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
+        boardBounds = board.GetComponent<SpriteRenderer>().bounds;
     }
 
     private void Update()

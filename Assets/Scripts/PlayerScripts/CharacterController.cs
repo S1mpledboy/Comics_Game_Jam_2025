@@ -28,7 +28,7 @@ public class CharacterController : MonoBehaviour
 
     private int health = 5;
 
-    private float timeToEndGame = 5 * 60 + 1;
+    private float timeToEndGame = 2 * 60 + 1;
 
     [SerializeField] Canvas gameplayCanvas;
     [SerializeField] TextMeshProUGUI _helperSignsText;
@@ -76,7 +76,7 @@ public class CharacterController : MonoBehaviour
         timeToEndGame -= Time.deltaTime;
         int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
         int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
-        _timerText.text = minutes + " " + seconds;
+        _timerText.text = minutes + ":" + seconds;
 
 
         _horizontalMovement = Input.GetAxis("Horizontal");
