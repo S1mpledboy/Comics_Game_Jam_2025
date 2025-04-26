@@ -103,35 +103,36 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
         {
             SetAnimation(PlayerStates.Doging);
-            print(_animator.GetBool("IsDoging"));
+            rigidbody.AddForce(new Vector2(_horizontalMovement, _verticalMovement)*10f, ForceMode2D.Force);
             _horizontalMovement = _verticalMovement = 0;
             print("Roll");
+            
             canRoll = false;
-            speed = 1.7f;
+            //speed = 1.7f;
             rollTime = 0.2f;
 
         }
-        if (_horizontalMovement == 0 && _verticalMovement == 0) 
-        {
-            SetAnimation(PlayerStates.Idle);
-            return;
-        }
-        SetAnimation(PlayerStates.Move);
-        Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
-        rigidbody.MovePosition(transform.position+directon*(speed * currentspeed*Time.deltaTime));
-
- 
-
-        if(!canRoll && rollTime > 0f)
+        if (!canRoll && rollTime > 0f)
         {
             rollTime -= Time.deltaTime;
-            if(rollTime <= 0f)
+            if (rollTime <= 0f)
             {
                 speed = 1f;
                 canRoll = true;
                 rollTime = 0f;
             }
         }
+        if (_horizontalMovement == 0 && _verticalMovement == 0) 
+        {
+            SetAnimation(PlayerStates.Idle);
+            return;
+        }else if (_horizontalMovement != 0 && _verticalMovement != 0)
+        {
+            SetAnimation(PlayerStates.Move);
+            Vector3 directon = new Vector3(_horizontalMovement, _verticalMovement).normalized;
+            rigidbody.MovePosition(transform.position + directon * (speed * currentspeed * Time.deltaTime));
+        }
+
     }
 
     public static void SetAnimation(PlayerStates state)
