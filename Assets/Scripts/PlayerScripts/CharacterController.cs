@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ using Unity.VisualScripting;
 
 public class CharacterController : MonoBehaviour
 {
+    public static Action OnTakeDamage;
     float _horizontalMovement, _verticalMovement;
     public float  currentspeed, digTime;
     private bool canRoll = true;
@@ -45,6 +47,16 @@ public class CharacterController : MonoBehaviour
         Move,
         Diging,
         Doging
+    }
+    void TakeDamage()
+    {
+        health--;
+        //StartAnimation
+        if(health <= 0) 
+        {
+            //EndGame;
+        }
+
     }
     // Start is called before the first frame update
     void Start()
