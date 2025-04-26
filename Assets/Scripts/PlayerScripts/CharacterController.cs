@@ -19,6 +19,8 @@ public class CharacterController : MonoBehaviour
     public int _helperSignsAmount = 0;
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
     public bool isShielded = false;
+
+    private int health = 5;
     public enum PlayerStates
     {
         Idle,
@@ -145,5 +147,11 @@ public class CharacterController : MonoBehaviour
     public void UpdateHelpersSign()
     {
         _helperSignsText.text = _helperSignsAmount.ToString();
+    }
+
+    public void ChangeHealth(int healthVal)
+    {
+        health = Mathf.Clamp(health + healthVal, 0, 5);
+
     }
 }
