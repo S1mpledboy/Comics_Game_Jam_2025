@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 using UnityEngine.Playables;
 public class MenuManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class MenuManager : MonoBehaviour
         cutSceneStaff.SetActive(true);
         cutScene.Play();
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -29,6 +32,9 @@ public class MenuManager : MonoBehaviour
     {
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
