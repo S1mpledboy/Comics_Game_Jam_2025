@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
     [SerializeField] Texture2D sprite;
     protected Bounds mapBounds;
     protected Vector2 playerPos;
-
+    [SerializeField] AudioClip dropSound;
     protected Vector2 position; // attack position
     protected float chargeTime = 2f; // time before activate dmg
     protected float radius = 5f; // how close to player can attack
@@ -114,6 +114,7 @@ public class Attack : MonoBehaviour
         circleCollider.isTrigger = true;
         circleCollider.radius = 0.5f;
         circleCollider.enabled = true;
+        AudioSource.PlayClipAtPoint(dropSound,transform.position);
     }
 
     protected virtual async Task WaitForTime(float time)

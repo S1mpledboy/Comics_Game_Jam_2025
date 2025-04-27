@@ -111,6 +111,6 @@ public class Tutorial : MonoBehaviour
             Destroy(attack.GetComponent<GameObject>());
         }
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
 }

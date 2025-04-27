@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
   sprite: {fileID: 0}
+  dropSound: {fileID: 0}
 --- !u!1 &7370090329815491240
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,4 +199,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapGo: {fileID: 390060900698563472, guid: 3390bc7dc9f55984885f4e62d36d5c17, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 2800000, guid: ad3b51888524f4d4ca2592fd2759ebdc, type: 3}
+  dropSound: {fileID: 8300000, guid: a3e5123d65e501e4cae49080f070ac34, type: 3}

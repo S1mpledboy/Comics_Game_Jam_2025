@@ -360,6 +360,6 @@ public class CharacterController : MonoBehaviour
         Time.timeScale = 1f;
         score = 0;
         timeToEndGame = 0;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
