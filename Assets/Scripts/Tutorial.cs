@@ -99,7 +99,7 @@ public class Tutorial : MonoBehaviour
                 nextStep = true;
             await Task.Yield();
         }
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
 
     }
 
@@ -111,6 +111,6 @@ public class Tutorial : MonoBehaviour
             Destroy(attack.GetComponent<GameObject>());
         }
         Time.timeScale = 1f;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
