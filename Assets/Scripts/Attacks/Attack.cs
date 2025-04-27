@@ -44,15 +44,17 @@ public class Attack : MonoBehaviour
         StartAttacking();
 
     }
-
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer ==3)
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer == 3)
         {
-            if (collision.GetComponent<CharacterController>().isShielded) return;
+            CharacterController player = collision.gameObject.GetComponent<CharacterController>();
+            if (player.isShielded||player.isInvisible) return;
             CharacterController.OnTakeDamage?.Invoke(-1);
+
         }
     }
+
     protected virtual Vector2 CalculatePosition()
     {
         // attack in some range near player
@@ -110,10 +112,8 @@ public class Attack : MonoBehaviour
     {
         gameObject.AddComponent<CircleCollider2D>();
         CircleCollider2D circleCollider = GetComponent<CircleCollider2D>();
-        circleCollider.enabled = false;
         circleCollider.isTrigger = true;
         circleCollider.radius = 0.5f;
-        circleCollider.enabled = true;
         AudioSource.PlayClipAtPoint(dropSound,transform.position);
     }
 

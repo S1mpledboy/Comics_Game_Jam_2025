@@ -14,29 +14,15 @@ public class SpeedBoostSign : Sign
     }
     protected override void SignAbillity()
     {
-        if (!_player.isSpeedBoosted)
-        {
-            _playersPrevSpeed = _player.currentspeed;
-            _player.currentspeed = _player.currentspeed*1.5f;
-            if (_player.currentspeed > 12f)
-            {
-                _player.currentspeed = 12f;
-            }
-            _player.isSpeedBoosted = true;
-        }
-        else if (_player.isSpeedBoosted)
-        {
-            return;
-        }
+         
+        _player.currentspeed = 10f;
 
     }
     protected override void RevertEffectOfSign()
     {
-        if (_player.isSpeedBoosted)
-        {
-            _player.currentspeed = _playersPrevSpeed;
-            _player.isSpeedBoosted = false;
-        }
+
+        FindObjectOfType<CharacterController>().currentspeed = 7;
+
         base.RevertEffectOfSign();
     }
 }

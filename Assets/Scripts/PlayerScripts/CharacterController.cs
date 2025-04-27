@@ -12,52 +12,50 @@ using System.Threading.Tasks;
 public class CharacterController : MonoBehaviour
 {
     public static Action<int> OnTakeDamage;
-    float _horizontalMovement, _verticalMovement;
-    public float  currentspeed, digTime;
-    private bool canRoll = true;
-    private float speed = 1f;
-    private float rollTime, elapsedTimeOfDigging; // how long can roll
-    Rigidbody2D rigidbody;
-    public GameObject toyDigSide;
-    static Animator _animator;
-    public Material toyMaterialBar;
-    public Material toyMaterialDirt;
-    [SerializeField] GameObject _helperSignPrefab, _holePrefab;
-    public bool isShielded = false, isSlowed = false, isSpeedBoosted;
-    public SpriteRenderer shield;
-    [SerializeField] List<GameObject> herarts = new List<GameObject>();
-    [SerializeField] List<SpriteRenderer> heartsSp = new List<SpriteRenderer>();
-    Dictionary<string, SpriteRenderer> heartsSpritesDic = new Dictionary<string, SpriteRenderer>();
-    private bool _isRolling = false;
-    public int collectedItems = 0;
     public static float score;
-    private int health = 4;
-    public float _helperSignsAmount = 3f;
+    static Animator _animator;
     public static float timeToEndGame = 0;
 
+    public GameObject toyDigSide;
+    public Material toyMaterialBar, toyMaterialDirt;
+    public float  currentspeed, digTime;
+    public bool isShielded = false, isInvisible = false;
+    public SpriteRenderer shield;
+    public int collectedItems = 0;
+    public float _helperSignsAmount = 3f, invisibilityTime = 2f;
     public AudioSource playerSFX;
-    private bool canGlow = true;
-    [SerializeField] public AudioClip walkSFX, healSFX, shieldSFX, dodgeSFX, damageSFX,diggingSFX;
-    [SerializeField] Canvas gameplayCanvas;
-    [SerializeField] public TextMeshProUGUI _scoreText;
-    [SerializeField] TextMeshProUGUI _timerText;
-    [SerializeField] TextMeshProUGUI _itemsCountText;
+    public AudioClip walkSFX, healSFX, shieldSFX, dodgeSFX, damageSFX, diggingSFX;
+    public TextMeshProUGUI _scoreText;
 
-
-    [SerializeField] Canvas gameOverCanvas;
-    [SerializeField] TextMeshProUGUI _itemsCountGameOverText;
-    [SerializeField] TextMeshProUGUI _timerGameOverText;
-
-    [SerializeField] GameObject diggingPlace;
-    [SerializeField] Image diggingCooldownBar;
+    private bool canRoll = true;
+    private float speed = 1f;
+    private float rollTime, elapsedTimeOfDigging;
+    Rigidbody2D rigidbody;
+    private bool _isRolling = false;
+    private int health = 4;
+    float _horizontalMovement, _verticalMovement;
+    int currentHeart = 0;
     private float diggingCooldown = 1f;
     private bool canDigging = true;
     Vector2 digPos;
-
     private Queue<GameObject> helperSigns = new Queue<GameObject>();
     private GameObject locatedSign;
 
-    int minutes, seconds;
+    [SerializeField] GameObject _helperSignPrefab, _holePrefab;
+
+    [SerializeField] List<GameObject> herarts = new List<GameObject>();
+    [SerializeField] List<SpriteRenderer> heartsSp = new List<SpriteRenderer>();
+    Dictionary<string, SpriteRenderer> heartsSpritesDic = new Dictionary<string, SpriteRenderer>();
+    [SerializeField] Canvas gameplayCanvas;
+    [SerializeField] TextMeshProUGUI _timerText;
+    [SerializeField] TextMeshProUGUI _itemsCountText;
+    [SerializeField] Canvas gameOverCanvas;
+    [SerializeField] TextMeshProUGUI _itemsCountGameOverText;
+    [SerializeField] TextMeshProUGUI _timerGameOverText;
+    [SerializeField] GameObject diggingPlace;
+    [SerializeField] Image diggingCooldownBar;
+
+
     public enum PlayerStates
     {
         Idle,
@@ -68,55 +66,27 @@ public class CharacterController : MonoBehaviour
     void TakeDamage(int valueOfChange)
     {
         health+=valueOfChange;
-        int index = 0;
-        if (health >= 4) 
+        if (health > 4) 
         {
             health = 4;
-            index = health - 1;
-     
         }
-        else
-        {
-            index = health;
-        }
-        if (valueOfChange < 0)
+   
+        
+        if (valueOfChange < 0 && currentHeart<4)
         {
             AudioSource.PlayClipAtPoint(damageSFX, transform.position);
-            
-            herarts.Reverse();
-            foreach (GameObject heart in herarts)
-            {
-                if(heart.GetComponent<Image>().sprite == heartsSpritesDic["Damage"].sprite)
-                {
-                    continue;
-
-                }else if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Heal"].sprite)
-                {
-                    heart.GetComponent<Image>().sprite = heartsSpritesDic["Damage"].sprite;
-                    break;
-                    
-                }
-            }
-
-            herarts.Reverse();
+            herarts[currentHeart].GetComponent<Image>().sprite = heartsSpritesDic["Damage"].sprite;
+            currentHeart++;
         }
-        else if (valueOfChange>0)
+        else if (valueOfChange>0 && currentHeart-1<4)
         {
-            AudioSource.PlayClipAtPoint(healSFX, transform.position);
-            
-            foreach (GameObject heart in herarts)
+            if (currentHeart - 1 < 0)
             {
-                if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Damage"].sprite)
-                {
-                    heart.GetComponent<Image>().sprite = heartsSpritesDic["Heal"].sprite;
-                    break;
-                }
-                else if (heart.GetComponent<Image>().sprite == heartsSpritesDic["Heal"].sprite)
-                {
-                    continue;
-
-                }
+                currentspeed = 1;
             }
+            AudioSource.PlayClipAtPoint(healSFX, transform.position);
+            herarts[currentHeart-1].GetComponent<Image>().sprite = heartsSpritesDic["Heal"].sprite;
+            currentHeart--;
 
         }
         
@@ -132,18 +102,40 @@ public class CharacterController : MonoBehaviour
     private void Awake()
     {
         OnTakeDamage += TakeDamage;
-
+        OnTakeDamage += SetInvisibility;
+        PopulateArrowPool();
+    }
+    void PopulateArrowPool()
+    {
         helperSigns.Enqueue(Instantiate(_helperSignPrefab, new Vector2(-300f, 0f), Quaternion.identity));
         helperSigns.Enqueue(Instantiate(_helperSignPrefab, new Vector2(-300f, 0f), Quaternion.identity));
         helperSigns.Enqueue(Instantiate(_helperSignPrefab, new Vector2(-300f, 0f), Quaternion.identity));
+    }
+    void SetInvisibility(int HPchange)
+    {
+        if (HPchange > 0) return; 
+        isInvisible = true;
+        Color tempAlpha = gameObject.GetComponent<SpriteRenderer>().color;
+        tempAlpha.a = 0.4f;
+        gameObject.GetComponent<SpriteRenderer>().color = tempAlpha;
+        Invoke(nameof(DisableInvisibility), invisibilityTime);
+    }
+    void DisableInvisibility()
+    {
+        Color tempAlpha = gameObject.GetComponent<SpriteRenderer>().color;
+        tempAlpha.a = 1f;
+        gameObject.GetComponent<SpriteRenderer>().color = tempAlpha;
+        isInvisible = false;
     }
     private void OnDestroy()
     {
         OnTakeDamage -= TakeDamage;
+        OnTakeDamage -= SetInvisibility;
     }
     private void OnDisable()
     {
         OnTakeDamage -= TakeDamage;
+        OnTakeDamage -= SetInvisibility;
     }
     // Start is called before the first frame update
     void Start()
@@ -152,14 +144,16 @@ public class CharacterController : MonoBehaviour
         _animator = GetComponent<Animator>();
         shield.gameObject.SetActive(false);
         playerSFX = GetComponent<AudioSource>();
+        
+        score = 0f;
+        timeToEndGame = 0;
+        
 
-        SetAnimation(PlayerStates.Idle);
         heartsSpritesDic.Add("Heal", heartsSp[0]);
         heartsSpritesDic.Add("Damage", heartsSp[1]);
         heartsSpritesDic.Add("Shield", heartsSp[2]);
-        //gameOverCanvas
 
-
+        SetAnimation(PlayerStates.Idle);
         gameOverCanvas.gameObject.SetActive(false);
     }
     public void PlayShieldHeartAnimation(string hearatName)
@@ -180,50 +174,66 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        Vector2 screenPos = Input.mousePosition;
-        //digPos = Camera.main.ScreenToWorldPoint(screenPos);
-        
-            digPos = (Vector2)Camera.main.ScreenToWorldPoint(screenPos) 
-                - (Vector2)transform.position;
-            digPos = digPos.normalized * 1.6f;
-            digPos = digPos + (Vector2)transform.position + new Vector2(0.5f, 0f);
-
-            diggingPlace.transform.position = digPos;
-        
-        if (currentspeed <= 0)
+        GetMousePosAndDigPosition();
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            currentspeed = 2f;
+            Application.Quit();
         }
-        timeToEndGame += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
-        int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
-        _timerText.text = minutes + ":" + seconds;
-        _scoreText.text = score.ToString();
 
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
         if (Input.GetMouseButton(0) && canDigging) 
         {
-            TryDig();
-            _horizontalMovement = _verticalMovement = 0;
-            if(!Toy.digging)
-                DiggingStartCooldown();
+            Dig();
         }
         // roll
         if (Input.GetKeyDown(KeyCode.Space) && canRoll)
         {
-            AudioSource.PlayClipAtPoint(dodgeSFX, transform.position);
-            SetAnimation(PlayerStates.Doging);  
-            canRoll = false;
-            _isRolling = true;
-            speed = 1.7f;
-            rollTime = 0.25f;
+            Dodge();
         }
         PlaceSign();
         CheckSpeed();
     }
+    void GetMousePosAndDigPosition()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        Vector2 screenPos = Input.mousePosition;
 
+        digPos = (Vector2)Camera.main.ScreenToWorldPoint(screenPos)
+            - (Vector2)transform.position;
+        digPos = digPos.normalized * 1.6f;
+        digPos = digPos + (Vector2)transform.position + new Vector2(0.5f, 0f);
+
+        diggingPlace.transform.position = digPos;
+    }
+    void Dig()
+    {
+        TryDig();
+        _horizontalMovement = _verticalMovement = 0;
+        if (!Toy.digging)
+            DiggingStartCooldown();
+    }
+    void CountTime()
+    {
+        timeToEndGame += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(timeToEndGame) / 60;
+        int seconds = Mathf.FloorToInt(timeToEndGame) % 60;
+        _timerText.text = minutes + ":" + seconds;
+        _scoreText.text = score.ToString();
+    }
+    void Dodge()
+    {
+        AudioSource.PlayClipAtPoint(dodgeSFX, transform.position);
+        SetAnimation(PlayerStates.Doging);
+        canRoll = false;
+        _isRolling = true;
+        speed = 1.7f;
+        rollTime = 0.25f;
+    }
+    void RestoreSpeed()
+    {
+        currentspeed = 7;
+    }
     private async Task DiggingStartCooldown()
     {
         canDigging = false;
@@ -245,7 +255,7 @@ public class CharacterController : MonoBehaviour
         playerSFX.Play();
         if (Toy.digging)
         {
-            print("Kopie");
+            
             toyMaterialDirt.SetFloat("_Fill", elapsedTimeOfDigging / digTime);
             elapsedTimeOfDigging += Time.deltaTime;
 
@@ -272,9 +282,10 @@ public class CharacterController : MonoBehaviour
     }
     void CheckSpeed()
     {
-        if (currentspeed < 0)
+        if (currentspeed <= 2)
         {
-            currentspeed = 2;
+            currentspeed = 2f;
+            Invoke(nameof(RestoreSpeed), 2f);
         }
     }
     void PlaceSign()
@@ -357,9 +368,9 @@ public class CharacterController : MonoBehaviour
     public void Reset()
     {
         StopAllCoroutines();
-        Time.timeScale = 1f;
         score = 0;
         timeToEndGame = 0;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

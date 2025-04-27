@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
 
 public class Sign : MonoBehaviour
@@ -13,6 +12,10 @@ public class Sign : MonoBehaviour
     [SerializeField] protected GameObject scoreOnBoardOb;
     Vector3 cureentpos;
     protected float addedSCore;
+    private void OnEnable()
+    {
+        _player = FindObjectOfType<CharacterController>();
+    }
     protected virtual void SignAbillity()
     {
 
@@ -21,10 +24,7 @@ public class Sign : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(_player == null)
-            {
-                _player = collision.gameObject.GetComponent<CharacterController>();
-            }
+  
             SignAbillity();
             
             corutine = WaitForSeconds(delaytime);

@@ -13,25 +13,17 @@ public class StopSign : Sign
     }
     protected override void SignAbillity()
     {
-        if(_player == null) return;
-        if (!_player.isSlowed||_player.currentspeed>=7f)
-        {
-            _playersPrevSpeed = _player.currentspeed;
+
             
-            _player.currentspeed = _player.currentspeed*0.7f;
+            _player.currentspeed -= 3f;
             print(_player.currentspeed);
-            _player.isSlowed = true;
-        }else if (_player.isSlowed)
-        {
-            Destroy(gameObject);
-           return;
-           
-        }
+
+
 
     }
     protected override void RevertEffectOfSign()
     {
-        _player.currentspeed = _playersPrevSpeed;
+        FindObjectOfType<CharacterController>().currentspeed += 3;
         GameObject scoreNumber = Instantiate(scoreOnBoardOb, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
         scoreNumber.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "-10";
         CharacterController.score -= 10f;

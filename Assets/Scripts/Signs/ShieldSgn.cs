@@ -20,7 +20,7 @@ public class ShieldSgn : Sign
     }
     protected override void RevertEffectOfSign()
     {
-        print("shield off");
+        print(_player.currentspeed);
         _player.isShielded = false;
         _player.shield.gameObject.SetActive(false);
         _player.PlayShieldHeartAnimation("Heal");

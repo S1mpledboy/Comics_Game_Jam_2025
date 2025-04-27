@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 1410025181}
   - component: {fileID: 1410025180}
   m_Layer: 5
-  m_Name: Leave
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1743,7 +1743,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1410025181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1128680313}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1410025181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2534,9 +2546,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Leave
-
-'
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 343b08ef4c64a3449bd2fdace0dd8674, type: 2}
   m_sharedMaterial: {fileID: -7985979071105145695, guid: 343b08ef4c64a3449bd2fdace0dd8674, type: 2}

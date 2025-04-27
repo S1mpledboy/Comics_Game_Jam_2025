@@ -12,4 +12,8 @@ public class MenuManager : MonoBehaviour
         cutSceneStaff.SetActive(true);
         cutScene.Play();
     }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
