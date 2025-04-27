@@ -2,7 +2,6 @@
 %TAG !u! tag:unity3d.com,2011:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 --- !u!114 &-8753852505400742965
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -463,9 +462,6 @@ MonoBehaviour:
 =======
 --- !u!114 &-9070322873261831703
 >>>>>>> Stashed changes
-=======
---- !u!114 &-9070322873261831703
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -502,7 +498,6 @@ MonoBehaviour:
   m_AvatarMask: {fileID: 0}
   m_ApplyAvatarMask: 1
   m_TrackOffset: 0
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_InfiniteClip: {fileID: 6503771475738101876}
@@ -1159,16 +1154,11 @@ AnimationClip:
 =======
 =======
 >>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   m_InfiniteClip: {fileID: 8918065125940075655}
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -1188,7 +1178,6 @@ MonoBehaviour:
   m_Tracks:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
   - {fileID: -5904984001869463294}
   - {fileID: 9141761203541495707}
   - {fileID: 1521001187087057913}
@@ -1205,16 +1194,12 @@ MonoBehaviour:
 =======
   - {fileID: -9070322873261831703}
 >>>>>>> Stashed changes
-=======
-  - {fileID: -9070322873261831703}
->>>>>>> Stashed changes
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!114 &1521001187087057913
@@ -1301,9 +1286,6 @@ MonoBehaviour:
 =======
 --- !u!74 &8918065125940075655
 >>>>>>> Stashed changes
-=======
---- !u!74 &8918065125940075655
->>>>>>> Stashed changes
 AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1336,7 +1318,6 @@ AnimationClip:
         time: 1.5
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
         value: 358
         inSlope: 478.7234
         outSlope: 478.7234
@@ -1347,9 +1328,6 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.5666667
         value: 750
-=======
-        value: 359
->>>>>>> Stashed changes
 =======
         value: 359
 >>>>>>> Stashed changes
@@ -1392,11 +1370,7 @@ AnimationClip:
     m_StartTime: 0
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     m_StopTime: 1.5666667
-=======
-    m_StopTime: 1.5
->>>>>>> Stashed changes
 =======
     m_StopTime: 1.5
 >>>>>>> Stashed changes
@@ -1434,7 +1408,6 @@ AnimationClip:
         time: 1.5
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
         value: 358
         inSlope: 478.7234
         outSlope: 478.7234
@@ -1445,9 +1418,6 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.5666667
         value: 750
-=======
-        value: 359
->>>>>>> Stashed changes
 =======
         value: 359
 >>>>>>> Stashed changes
@@ -1471,7 +1441,6 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events: []
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!114 &7770533420073989299
@@ -1527,8 +1496,6 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
-=======
->>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
