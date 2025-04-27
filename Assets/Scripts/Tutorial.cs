@@ -72,7 +72,7 @@ public class Tutorial : MonoBehaviour
             await Task.Yield();
         }
         hintText.text = "Chaos brother is angry!. Space to roll!";
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 1; i++)
         {
             Vector2 pos = transform.position;
             pos.x = pos.x - Mathf.Pow(-0.5f, (int)(i / 2));
