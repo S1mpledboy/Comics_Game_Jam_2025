@@ -7,6 +7,6 @@ public class GameStarter : MonoBehaviour
 {
     private void OnEnable()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

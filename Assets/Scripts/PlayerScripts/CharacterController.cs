@@ -358,6 +358,8 @@ public class CharacterController : MonoBehaviour
     {
         StopAllCoroutines();
         Time.timeScale = 1f;
+        score = 0;
+        timeToEndGame = 0;
         SceneManager.LoadScene(1);
     }
 }
