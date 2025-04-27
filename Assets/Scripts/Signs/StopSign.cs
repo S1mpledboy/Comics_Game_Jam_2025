@@ -14,7 +14,7 @@ public class StopSign : Sign
     protected override void SignAbillity()
     {
         if(_player == null) return;
-        if (!_player.isSlowed)
+        if (!_player.isSlowed||_player.currentspeed>=7f)
         {
             _playersPrevSpeed = _player.currentspeed;
             
