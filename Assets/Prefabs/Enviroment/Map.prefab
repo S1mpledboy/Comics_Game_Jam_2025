@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 260557111869252990}
   toyGo: {fileID: 6762921299256070938, guid: 512ce9661c01f4744a1e2487b81bd75e, type: 3}
+  toyHiddenGo: {fileID: 6762921299256070938, guid: 4d8e6e3ef120f3744963f796bd545cad, type: 3}
 --- !u!114 &390060900698563476
 MonoBehaviour:
   m_ObjectHideFlags: 0
