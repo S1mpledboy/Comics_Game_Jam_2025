@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    /*
-    cykl ¿ycia ataku:
-    1)  spawnuje siê w okolicy gracza
-    2)  pokazuje siê na pod³odze obszar zagro¿enia
-        z czasem robi siê co raz bardziej czerwony
-    3)  po czasie ³adowania siê odpala
-    4)  usuniêcie ze sceny
-   */
+
     protected GameObject playerGo;
     [SerializeField] GameObject mapGo;
     protected GameObject mapGoAttack;
@@ -84,8 +77,6 @@ public class Attack : MonoBehaviour
     {
         await ChargeAttack();
 
-        await DropDownAttack();
-
         DealDamage();
 
         await WaitForTime(0.1f);
@@ -95,9 +86,6 @@ public class Attack : MonoBehaviour
 
     protected virtual async Task ChargeAttack()
     {
-        //spriteRenderer.sprite = attackWarningSprite;
-        //transform.localScale = new Vector2(attackRadius, attackRadius);
-        //transform.GetChild(0).localScale = new Vector2(1f, 1f);
 
         GameObject attackObjet = transform.GetChild(0).gameObject;
         Vector2 startPos = attackObjet.transform.position;
@@ -116,23 +104,7 @@ public class Attack : MonoBehaviour
         }
     }
 
-    protected virtual async Task DropDownAttack()
-    {/*
-        GameObject attackObjet = transform.GetChild(0).gameObject;
-        Vector2 startPos = attackObjet.transform.position;
-        Vector2 endPos = transform.position;
-        float t = 0f;
 
-        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime;
-            attackObjet.transform.position = Vector2.Lerp(startPos, endPos, t);
-            await Task.Yield();
-        }
-        */
-    }
 
     protected virtual void DealDamage()
     {
