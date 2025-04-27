@@ -23,7 +23,7 @@ public class SpawnToys : MonoBehaviour
         Vector2 pos = Vector2.zero;
         pos.x = Random.Range(boardBounds.min.x, boardBounds.max.x);
         pos.y = Random.Range(boardBounds.max.y, boardBounds.min.y);
-        Instantiate(toyGo, pos, Quaternion.identity);
 
+        Instantiate(toyGo, pos, Quaternion.identity);
     }
 }

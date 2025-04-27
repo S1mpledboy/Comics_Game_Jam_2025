@@ -61,7 +61,6 @@ Material:
     - _Digging: 0.57
     - _EnableExternalAlpha: 0
     - _Fill: 0
-    - _HiddenLevel: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
