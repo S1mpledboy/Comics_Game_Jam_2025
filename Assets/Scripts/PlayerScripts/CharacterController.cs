@@ -54,6 +54,9 @@ public class CharacterController : MonoBehaviour
     private bool canDigging = true;
     Vector2 digPos;
 
+    private Queue<GameObject> helperSigns = new Queue<GameObject>();
+    private GameObject locatedSign;
+
     int minutes, seconds;
     public enum PlayerStates
     {
@@ -129,6 +132,10 @@ public class CharacterController : MonoBehaviour
     private void Awake()
     {
         OnTakeDamage += TakeDamage;
+
+        helperSigns.Enqueue(Instantiate(_helperSignPrefab, new Vector2(-300f, 0f), Quaternion.identity));
+        helperSigns.Enqueue(Instantiate(_helperSignPrefab, new Vector2(-300f, 0f), Quaternion.identity));
+        helperSigns.Enqueue(Instantiate(_helperSignPrefab, new Vector2(-300f, 0f), Quaternion.identity));
     }
     private void OnDestroy()
     {
@@ -274,7 +281,11 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) )
         {
-            GameObject locatedSign = Instantiate(_helperSignPrefab, transform.position, Quaternion.identity);
+            //GameObject locatedSign = Instantiate(_helperSignPrefab, transform.position, Quaternion.identity);
+            locatedSign = helperSigns.Dequeue();
+            locatedSign.GetComponent<LocatedHelperSign>().Init();
+            locatedSign.transform.position = transform.position;
+            helperSigns.Enqueue(locatedSign);
         }
     }
     private void FixedUpdate()

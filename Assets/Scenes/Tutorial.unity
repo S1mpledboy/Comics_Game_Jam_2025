@@ -785,6 +785,10 @@ PrefabInstance:
       propertyPath: _helperSignsAmount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3490530255514165372, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+      propertyPath: m_text
+      value: Continue
+      objectReference: {fileID: 0}
     - target: {fileID: 4399507746466632058, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -844,6 +848,10 @@ PrefabInstance:
     - target: {fileID: 7295778292150472023, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 259
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604453048447063798, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec006f6f3bd1b54095a924d44e9b1a2, type: 3}
