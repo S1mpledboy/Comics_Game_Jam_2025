@@ -16,6 +16,8 @@ public class Toy : MonoBehaviour
     private Material materialBar;
     private Material materialDirt;
 
+    [SerializeField] float hiddenLevel;
+
     private void Awake()
     {
         // set random sprite
@@ -25,6 +27,8 @@ public class Toy : MonoBehaviour
         materialBar.SetFloat("_Fill", 0f);
         materialDirt = transform.GetChild(2).GetComponent<SpriteRenderer>().material;
         materialDirt.SetFloat("_Fill", 0f);
+
+        materialDirt.SetFloat("_HiddenLevel", hiddenLevel);
     }
 
 
