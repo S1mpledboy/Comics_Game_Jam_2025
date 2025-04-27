@@ -283,8 +283,8 @@ public class CharacterController : MonoBehaviour
         {
             //GameObject locatedSign = Instantiate(_helperSignPrefab, transform.position, Quaternion.identity);
             locatedSign = helperSigns.Dequeue();
-            locatedSign.GetComponent<LocatedHelperSign>().Init();
-            locatedSign.transform.position = transform.position;
+            locatedSign.GetComponent<LocatedHelperSign>().Init(transform.position);
+            //locatedSign.transform.position = transform.position;
             helperSigns.Enqueue(locatedSign);
         }
     }

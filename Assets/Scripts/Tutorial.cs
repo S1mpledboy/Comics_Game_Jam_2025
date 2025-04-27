@@ -72,7 +72,7 @@ public class Tutorial : MonoBehaviour
             await Task.Yield();
         }
         hintText.text = "Chaos brother is angry!. Space to roll!";
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             Vector2 pos = transform.position;
             pos.x = pos.x - Mathf.Pow(-0.5f, (int)(i / 2));
@@ -105,7 +105,11 @@ public class Tutorial : MonoBehaviour
 
     public void Reset()
     {
-        
+        Attack[] arr = FindObjectsOfType<Attack>();
+        foreach (Attack attack in arr)
+        {
+            Destroy(attack.GetComponent<GameObject>());
+        }
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }

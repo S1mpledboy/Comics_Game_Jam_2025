@@ -10,14 +10,16 @@ public class LocatedHelperSign : MonoBehaviour
     [SerializeField] GameObject _poleGo;
     private void OnEnable()
     {
-        Init();
+        Init(new Vector2(-300f, 0f));
        
         
     }
 
-    public void Init()
+    public void Init(Vector2 pos)
     {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         Transform toy = GameObject.FindGameObjectWithTag("Toy").transform;
+        transform.position = pos;
         Vector3 look = transform.InverseTransformPoint(toy.transform.position);
         float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg;
         transform.Rotate(0, 0, angle);
