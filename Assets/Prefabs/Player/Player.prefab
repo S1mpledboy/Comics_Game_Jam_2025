@@ -643,17 +643,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20cf2f529c26ad448e42bc80d0d9efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentspeed: 7
-  digTime: 0
   toyDigSide: {fileID: 0}
   toyMaterialBar: {fileID: 0}
   toyMaterialDirt: {fileID: 0}
+  currentspeed: 7
+  digTime: 0
+  isShielded: 0
+  isInvisible: 0
+  shield: {fileID: 6795611656449422683}
+  collectedItems: 0
+  _helperSignsAmount: 1
+  invisibilityTime: 2
+  playerSFX: {fileID: 0}
+  walkSFX: {fileID: 8300000, guid: 93531d76d94fad543b5769fb4ed1dfe7, type: 3}
+  healSFX: {fileID: 8300000, guid: c8e4a08ae2dc3df45add7c0c2b83fe9f, type: 3}
+  shieldSFX: {fileID: 8300000, guid: 8835cd2a524236c46ac5b13f14a93aee, type: 3}
+  dodgeSFX: {fileID: 8300000, guid: ff8a184cf5bb01742ac3eb7f91d569ee, type: 3}
+  damageSFX: {fileID: 8300000, guid: 70ca7565a674fb645ae4deadd25c5ef2, type: 3}
+  diggingSFX: {fileID: 8300000, guid: 19bfcd28241afbf4789633c5194928f9, type: 3}
+  _scoreText: {fileID: 6967176267996775699}
   _helperSignPrefab: {fileID: 6762921299256070938, guid: a807ce4f24b5429439ab5ecf30a18808, type: 3}
   _holePrefab: {fileID: 6079404872027252161, guid: d99ac74e4428fa845a021ffeb927e443, type: 3}
-  isShielded: 0
-  isSlowed: 0
-  isSpeedBoosted: 0
-  shield: {fileID: 6795611656449422683}
   herarts:
   - {fileID: 7163884497636567064}
   - {fileID: 4221199449307188319}
@@ -663,17 +673,7 @@ MonoBehaviour:
   - {fileID: 6097238821808712685, guid: c0cf015f906879c419a2cabbff6a84df, type: 3}
   - {fileID: 6097238821808712685, guid: ffed46713a1969946b2e0b3a3f6ea5cc, type: 3}
   - {fileID: 6097238821808712685, guid: d55052c5ba8d2bb4cb7c67f626eafcc9, type: 3}
-  collectedItems: 0
-  _helperSignsAmount: 1
-  playerSFX: {fileID: 0}
-  walkSFX: {fileID: 8300000, guid: 93531d76d94fad543b5769fb4ed1dfe7, type: 3}
-  healSFX: {fileID: 8300000, guid: c8e4a08ae2dc3df45add7c0c2b83fe9f, type: 3}
-  shieldSFX: {fileID: 8300000, guid: 8835cd2a524236c46ac5b13f14a93aee, type: 3}
-  dodgeSFX: {fileID: 8300000, guid: ff8a184cf5bb01742ac3eb7f91d569ee, type: 3}
-  damageSFX: {fileID: 8300000, guid: 70ca7565a674fb645ae4deadd25c5ef2, type: 3}
-  diggingSFX: {fileID: 8300000, guid: 19bfcd28241afbf4789633c5194928f9, type: 3}
   gameplayCanvas: {fileID: 6752398197284411228}
-  _scoreText: {fileID: 6967176267996775699}
   _timerText: {fileID: 5810740552331318401}
   _itemsCountText: {fileID: 4528355608302282883}
   gameOverCanvas: {fileID: 3542509396914431026}
@@ -2883,37 +2883,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2708174891349093626}
     m_Modifications:
-    - target: {fileID: 1208715774528688788, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
-      propertyPath: m_Color.a
-      value: 0.45490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 1208715774528688788, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1208715774528688788, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 62dcb84956e6ed944832c22a489ed387, type: 2}
     - target: {fileID: 2290427548424732675, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
       propertyPath: m_Name
       value: DiggingPlace
       objectReference: {fileID: 0}
+    - target: {fileID: 2290427548424732675, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5719104942023954180, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5719104942023954180, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5719104942023954180, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5719104942023954180, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5719104942023954180, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2955,10 +2935,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5719104942023954180, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
 --- !u!1 &4113781115266514099 stripped
@@ -2966,43 +2942,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2290427548424732675, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}
   m_PrefabInstance: {fileID: 2800726152292580528}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &5174439745357063425
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4113781115266514099}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &616012861702870453
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4113781115266514099}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!4 &7602210571165856692 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5719104942023954180, guid: ac9ab0b150ff01a4090f0be58a435624, type: 3}

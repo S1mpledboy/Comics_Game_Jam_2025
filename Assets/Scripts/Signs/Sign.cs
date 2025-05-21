@@ -44,7 +44,7 @@ public class Sign : MonoBehaviour
 
         Destroy(gameObject, 3f);
     }
-    IEnumerator WaitForSeconds(float delaytime = 3f)
+    protected virtual IEnumerator WaitForSeconds(float delaytime = 3f)
     {
         yield return new WaitForSeconds(delaytime);
         RevertEffectOfSign();

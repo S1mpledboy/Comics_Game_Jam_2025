@@ -8,14 +8,23 @@ public class Hole : MonoBehaviour
 {
     private Material material;
     float t;
+    float startTime;
     private void Awake()
     {
         material = GetComponent<SpriteRenderer>().material;
-        StartFading();
-
+        t = -5f;
     }
-  
 
+
+    private void Update()
+    {
+        material.SetFloat("_Fill", t);
+        t += Time.deltaTime;
+
+        if (t > 1f)
+            Destroy(gameObject);
+    }
+    /*
     private async Task StartFading()
     {
         float t = 0;
@@ -36,4 +45,5 @@ public class Hole : MonoBehaviour
         Destroy(gameObject);
 
     }
+    */
 }

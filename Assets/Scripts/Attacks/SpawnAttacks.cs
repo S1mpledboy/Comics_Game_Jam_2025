@@ -13,16 +13,17 @@ public class SpawnAttacks : MonoBehaviour
 
     private Bounds boardBounds;
     private int randomAttack; // index of attack
-    private float spawnTime = 1f; // time for spawn attack
+    private float spawnTime = 5f; // time for spawn attack
     private float spawnCooldown;
     private float radius = 5f; // how close to player can attack
     private float sequenceSpace = 3f; // space in sequence attacks
-
+    private float _startTime;
 
     private void Start()
     {
         spawnCooldown = spawnTime;
         boardBounds = board.GetComponent<SpriteRenderer>().bounds;
+        _startTime = Time.time;
     }
 
     private void Update()
@@ -32,7 +33,7 @@ public class SpawnAttacks : MonoBehaviour
         if (spawnCooldown < 0f)
         {
             SpawnAttack();
-            spawnCooldown = spawnTime;
+            spawnCooldown = Mathf.Lerp(spawnTime, 1f, (Time.time - _startTime) / (60 * 5));
         }
     }
 

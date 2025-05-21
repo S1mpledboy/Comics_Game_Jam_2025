@@ -41,6 +41,11 @@ public class CharacterController : MonoBehaviour
     private Queue<GameObject> helperSigns = new Queue<GameObject>();
     private GameObject locatedSign;
 
+    public bool isSppedUp = false;
+    public float boostTime = 0f;
+    public bool isSppedDown = false;
+    public float slowTime = 0f;
+
     [SerializeField] GameObject _helperSignPrefab, _holePrefab;
 
     [SerializeField] List<GameObject> herarts = new List<GameObject>();
@@ -80,10 +85,12 @@ public class CharacterController : MonoBehaviour
         }
         else if (valueOfChange>0 && currentHeart-1<4)
         {
+            
             if (currentHeart - 1 < 0)
             {
                 currentspeed = 1;
             }
+            
             AudioSource.PlayClipAtPoint(healSFX, transform.position);
             herarts[currentHeart-1].GetComponent<Image>().sprite = heartsSpritesDic["Heal"].sprite;
             currentHeart--;
@@ -201,9 +208,10 @@ public class CharacterController : MonoBehaviour
 
         digPos = (Vector2)Camera.main.ScreenToWorldPoint(screenPos)
             - (Vector2)transform.position;
-        digPos = digPos.normalized * 1.6f;
-        digPos = digPos + (Vector2)transform.position + new Vector2(0.5f, 0f);
+        if (digPos.magnitude > 1.6f)
+            digPos = digPos.normalized * 1.6f;
 
+        digPos = digPos + (Vector2)transform.position + new Vector2(0.5f, 0f);
         diggingPlace.transform.position = digPos;
     }
     void Dig()

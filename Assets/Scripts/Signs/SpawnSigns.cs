@@ -10,14 +10,16 @@ public class SpawnSigns : MonoBehaviour
 
     private Bounds boardBounds;
     private int randomSign; // index of signsGo
-    private float spawnTime = 1f; // time for spawn sign
+    private float spawnTime = 5f; // time for spawn sign
     private float spawnCooldown;
+    private float _startTime;
 
 
     private void Start()
     {
         spawnCooldown = spawnTime;
         boardBounds = board.GetComponent<SpriteRenderer>().bounds;
+        _startTime = Time.time;
     }
 
     private void Update()
@@ -26,7 +28,8 @@ public class SpawnSigns : MonoBehaviour
 
         if (spawnCooldown < 0f)
         {
-            spawnCooldown = spawnTime;
+            spawnCooldown = 1f;
+            //spawnCooldown = Mathf.Lerp(spawnTime, 1f, (Time.time - _startTime) / (60 * 5));
             SpawnSign();
         }
     }
